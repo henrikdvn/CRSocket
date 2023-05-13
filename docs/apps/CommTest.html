@@ -1,23 +1,30 @@
-<body>
-	<h1>CommTest</h1>
-	<p>This application facilitates testing of the CRSocket component, using default settings. It consists of a controller/responder app pair that are identical, except that they are initiated with "controller" and "responder" clientRoles respectively.</p>
-	<p>Note that the default authToken is a non-empty string of Ascii printable characters.</p>
-	
-	<h2>Functionality</h2>
-	<p>The primary purpose of the app is to monitor:</p>
-	<ul>
-		<li>State changes, server communication and crSocket interaction under various circumstances.</li>
-		<li>Success rate, delays and reception accuracy of crEvents transmitted between clients.</li>
-	</ul>
-	<p>The app displays:</p>
-	<ul>
-		<li>No of messageEvents transmitted to/from the <a href="?section=Resources&name=eventsource">eventsource</a> server process.</li>
-		<li>Amount of time the <a href="?section=JavaScript&name=CREventReceiver">eventReceiver</a> spends in connecting, open and closed states.</li>
-		<li>The round trip time of <a href="?section=Resources&name=eventsource#aliveEvent">alive</a> messsageEvents.</li>
-		<li>No of crEvents transmitted to/from partner clients.</li>
-		<li>The current state/substate of the crSocket and it's internal eventReceiver and eventSender objects.</li>
-		<li>Conficuration parameters assigned to the crSocket: clientId, accessToken and partnerClientId.</li>
-	</ul>
-	<p>It is also possible to monitor state changes and internal events in the JavaScript console.</p>
-</body>
-
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRSocket</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+			<link href="../css/styles.css" rel="stylesheet" type="text/css">
+			</head>
+	<body>
+		<h1>CommTest</h1>
+		<p>This application facilitates testing of the CRSocket component, using default settings. It consists of a controller/responder app pair that are identical, except that they are initiated with "controller" and "responder" clientRoles respectively.</p>
+		<p>Note that the default authToken is a non-empty string of Ascii printable characters.</p>
+		
+		<h2>Functionality</h2>
+		<p>The primary purpose of the app is to monitor:</p>
+		<ul>
+			<li>State changes, server communication and crSocket interaction under various circumstances.</li>
+			<li>Success rate, delays and reception accuracy of crEvents transmitted between clients.</li>
+		</ul>
+		<p>The app displays:</p>
+		<ul>
+			<li>No of messageEvents transmitted to/from the <a href="?section=Resources&name=eventsource">eventsource</a> server process.</li>
+			<li>Amount of time the <a href="?section=JavaScript&name=CREventReceiver">eventReceiver</a> spends in connecting, open and closed states.</li>
+			<li>The round trip time of <a href="?section=Resources&name=eventsource#aliveEvent">alive</a> messsageEvents.</li>
+			<li>No of crEvents transmitted to/from partner clients.</li>
+			<li>The current state/substate of the crSocket and it's internal eventReceiver and eventSender objects.</li>
+			<li>Conficuration parameters assigned to the crSocket: clientId, accessToken and partnerClientId.</li>
+		</ul>
+		<p>It is also possible to monitor state changes and internal events in the JavaScript console.</p>
+	</body>
+</html>
