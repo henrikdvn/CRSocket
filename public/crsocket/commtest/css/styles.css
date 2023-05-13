@@ -1,0 +1,65 @@
+
+body {margin: 0 0.5ex 0 0.5ex; padding: 0; position: absolute; font-family: sans-serif; font-size: 16px}
+
+h1 {font-size:1em; font-weight: bold; text-align: center; margin-top: 1ex}
+
+input, button {font-family: sans-serif; font-size: 1em}
+
+table {border-collapse: collapse; margin: 0; padding: 0; border: none}
+
+th, td {padding: 1ex 0 1ex 0; border: none}
+
+hr {margin: 0 0 1ex 0; border: 1px solid black}
+
+input {border-radius: 0}
+button {border-radius: 1ex; background-color: #fff; color: black}
+
+th {font-weight: bold; text-align: left; padding: 1ex 0 1ex 1ex}
+th.top {text-align: center; padding-left: 0}
+
+table.group {}
+td.group {vertical-align: top; padding: 0; border: none}
+
+table.info, table.setup {margin: 0 1ex 1ex 0}
+table.right {margin-right: 0}
+table.bottom {margin-bottom: 0}
+
+th.info, td.info {font-size: 1em; border: 1px solid black}
+td.count, td.millisecs {text-align: center}
+td.param, td.state {text-align: left; padding-left: 1ex}
+
+th.count {width: 10ex}
+td.count {width: 5ex}
+
+th.millisecs {width: 7ex}
+td.millisecs {width: 8ex}
+
+th.param {width: 14ex}
+td.param {width: 16ex}
+
+th.state {width: 16ex}
+td.state {width: 16ex}
+
+td.filler {text-align: center}
+
+th.setup {width: 6ex}
+td.setup {text-align: center; width: 12ex}
+
+td.evParam, td.evDt {width: 11ex}
+td.evOption {width: 6ex}
+
+th.flagged, button.flagged, button:disabled.flagged, input.flagged {color: green}
+
+input.setup, button.setup {font-weight: bold; text-align:center; height:4ex; border: 1px solid black; padding: 0; background-color: #fff}
+
+input.setup {width: 10ex}
+input.evParam, input.evDt {width: 9ex}
+
+button.setup {width: 10ex}
+button.evOption {width: 5ex}
+
+input:invalid {color: red}
+input:placeholder-shown {border-color: red}
+input:placeholder-shown:read-only {border-color: #000}
+
+button:disabled {color: #888}

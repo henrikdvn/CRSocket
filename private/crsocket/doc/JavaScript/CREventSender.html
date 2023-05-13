@@ -1,0 +1,127 @@
+<body>
+	<h1>CREventSender</h1>
+	<p>This class extends <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a></p>
+	<p>It is used to send events to identified clients who receive them by means of the HTML EventSource interface</p>
+	
+	<h2>Contstructor</h2>
+	<dl>
+		<dt>CREventSender(config, clientRole)</dt>
+		<dd>
+			<details>
+				<summary>Parameters</summary>
+				<dl>
+					<dt>config</dt>
+					<dd>A <a href="?section=JavaScript&name=CRConfig">CRConfig</a> object, required</dd>
+					<dd>Configuration parameters and methods</dd>
+					
+					<dt>clientRole</dt>
+					<dd>String, required</dd>
+					<dd>The role of the client ("controller" or "responder")</dd>
+				</dl>
+			</details>
+		</dd>
+	</dl>
+	
+	<h2>Properties</h2>
+	<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> properties</p>
+	<dl>
+		<dt>clientActive</dt>
+		<dd>Boolean, writeOnly</dd>
+		<dd>Indicates whether the client is active or not</dd>
+		
+		<dt>clientId</dt>
+		<dd>String, writeOnly</dd>
+		<dd>The current clientId</dd>
+		
+		<dt>accessToken</dt>
+		<dd>String, writeOnly</dd>
+		<dd>The current accessToken</dd>
+		
+		<dt>partnerClientId</dt>
+		<dd>String, writeOnly</dd>
+		<dd>Identifies the client to which this sender will send events</dd>
+	</dl>
+	
+	<h2>Methods</h2>
+	<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> methods</p>
+	<dl>
+		<dt>Init()</dt>
+		<dd>Initiates dynamic variables and activates the object</dd>
+		
+		<dt id="genCrEvent">genCrEvent(eventType, eventSubType = "", eventParams = [], buffered = false, logged = false, interceptable = true)</dt>
+		<dd>Generates a CREvent object, with sender and recipient properties assigned to the sender
+			<details>
+				<summary>Parameters</summary>
+				<dl>
+					<dt>eventType</dt>
+					<dd>String, required</dd>
+					<dd>The event type</dd>
+					
+					<dt>eventSubType</dt>
+					<dd>String, default = ""</dd>
+					<dd>Optional subtype, providing explanatory information not affecting event handling</dd>
+					
+					<dt>eventParams</dt>
+					<dd>Array, default = []</dd>
+					<dd>
+						An abitrary array of strings that can be converted to actual values using default ECMAScript string conversion. The strings must not contain the config.eventDataSplitChar character (comma by default).
+					</dd>
+					
+					<dt>buffered</dt>
+					<dd>boolean, default = false</dd>
+					<dd>If true, the event will be saved if the client is offline and sent (if possible) when it becomes online.</dd>
+					
+					<dt>logged</dt>
+					<dd>Boolean, default = false</dd>
+					<dd>If true the event will always be logged by the eventSender, even if not forwarded</dd>
+					
+					<dt>interceptable</dt>
+					<dd>Boolean, default = true</dd>
+					<dd>If true, the event can be intercepted/modified by server-side interceptor functions</dd>
+				</dl>
+			</details>
+		</dd>
+		
+		<dt>sendCrEvent(crEvent)</dt>
+		<dd>Sends a crEvent, ensuring a minimum delay of <a href="?section=JavaScript&name=CRConfig#minCrEventDt">minCrEventDt</a> millisecs between events.
+			<details>
+				<summary>Parameters</summary>
+				<dl>
+					<dt>crEvent</dt>
+					<dd>A <a href="?section=JavaScript&name=CREvent">CREvent</a> object, required</dd>
+				</dl>
+			</details>
+		</dd>
+		
+		<dt>sendCrEventNow(crEvent)</dt>
+		<dd>Sends a crEvent immediately
+			<details>
+				<summary>Parameters</summary>
+				<dl>
+					<dt>crEvent</dt>
+					<dd>A <a href="?section=JavaScript&name=CREvent">CREvent</a> object, required</dd>
+				</dl>
+			</details>
+		</dd>
+
+	</dl>
+	
+	<h2>Events</h2>
+	<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> events</p>
+	
+	<h2>States</h2>
+	<dl>
+		<dt>ready</dt>
+		<dd>
+			The sender has been assigned the required sender/recipient properties and is able to send events.
+		</dd>
+		<dt>partnerRejected</dt>
+		<dd>
+			The sender has been assigned required properties, but has been rejected by the assigned partner.
+		</dd>
+		<dt>notReady</dt>
+		<dd>
+			The sender has not been assigned the required sender/recipient properties and is not able to send events.
+		</dd>
+	</dl>
+</body>

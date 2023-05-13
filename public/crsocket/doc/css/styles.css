@@ -1,0 +1,27 @@
+body {margin: 1em; font-family: helvetica}
+header {border-bottom: 1px solid black}
+h1 {margin: 1ex 0 1ex 0; font-size: 2em}
+h2 {margin: 1em 0 1ex 0; font-size: 1.5em}
+h3 {margin: 1ex 0 1ex 0; font-size: 1em}
+
+p.overview {margin: 1ex 0}
+p.lev1A {margin: 1em 0 1em 1em}
+p.descrA {margin: 1em 0 1em 1em}
+p.introA {margin: 0}
+
+dl {margin: 1em 0 1em 1em}
+
+dt {margin: 1em 0 0 1ex; color: #008; font-weight: bold}
+dt.lev1A {margin-top: 1.5em}
+dt.lev2A {margin-top: 1.0em}
+
+dd {margin: 1ex 1ex 0 1ex}
+
+details {margin: 1ex 0 0 0}
+
+span.property {font-weight: bold; color: #008}
+span.name {font-weight: bold; color: #008}
+span.filename {font-weight: bold; color: #000}
+
+ul {margin-top: 0; margin-left: 0; padding-left: 1em}
+li {margin-left: 1ex; margin-bottom: 1ex}

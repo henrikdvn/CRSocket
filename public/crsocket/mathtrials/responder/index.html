@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>MathTrials Responder</title>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta name="viewport" content="width=device-width">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+		<script src="../../js/CRUtil.js"></script>
+		<script src="../../js/CRConfig.js"></script>
+		<script src="../../js/CREvent.js"></script>
+		<script src="../../js/CRStateMachine.js"></script>
+		<script src="../../js/CREventSender.js"></script>
+		<script src="../../js/CREventReceiver.js"></script>
+		<script src="../../js/CRSocket.js"></script>
+		<script src="../js/MathTrial.js"></script>
+		<script src="../js/MathTrialsConfig.js"></script>
+		<script src="../js/MathTrialsClient.js"></script>
+		<script src="../js/MathTrialsResponder.js"></script>
+	</head>
+	<body onload="config = new MathTrialsConfig(); client = new MathTrialsResponder(config); client.init()">
+		<div id="setupPage">
+			<h1>MathTrials Responder <span id="versionSpan"></span></h1>
+			<h2 id="stateHeader">State</h2>
+			<h2 id="subStateHeader">SubState</h2>
+			<table>
+				<tr id="signInRow">
+					<td class="setup">
+						<input class="setup" id="accessTokenInput" type="text" value="" placeholder="User" oninput="client.onAccessTokenInputChanged()">
+					</td>
+					<td class="setup">
+						<button class="setup" id="signInButton" type="button" onclick="client.assignAccessToken()">signIn</button>
+						<button class="setup" id="signOutButton" type="button" onclick="client.clearAccessToken()">signOut</button>
+					</td>
+					<td class="tick" id="signedInCell"></td>
+				</tr>
+				<tr id="partnerRow">
+					<td class="setup">
+						<input class="setup" id="partnerClientIdInput" type="text" value="" placeholder="Controller" readonly>
+					</td>
+					<td class="setup">
+						<button class="setup" id="unassignPartnerButton" type="button" onclick="client.unassignPartner()">Unassign</button>
+					</td>
+					<td class="tick" id="interactingCell"></td>
+				</tr>
+			</table>
+		</div>
+		<div id="taskPage">
+			<table id="taskTable">
+				<tr>
+					<td class="task" id="questionCell"></td>
+				</tr>
+				<tr>
+					<td class="task" id="answerInputCell">
+						<input id="answerInput" type="text" placeholder="" value="" inputmode="numeric" pattern="^[0-9]*$">
+					</td>
+				</tr>
+				<tr>
+					<td class="task" id="answerButtonCell">
+						<button id="answerButton" type="button" onclick="client.submitTrial()">Submit</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

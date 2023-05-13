@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>MathTrials Controller</title>
+		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+		<meta name="viewport" content="width=device-width">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+		<script src="../../js/CRUtil.js"></script>
+		<script src="../../js/CRConfig.js"></script>
+		<script src="../../js/CREvent.js"></script>
+		<script src="../../js/CRStateMachine.js"></script>
+		<script src="../../js/CREventSender.js"></script>
+		<script src="../../js/CREventReceiver.js"></script>
+		<script src="../../js/CRSocket.js"></script>
+		<script src="../js/MathTrial.js"></script>
+		<script src="../js/MathTrialsConfig.js"></script>
+		<script src="../js/MathTrialsClient.js"></script>
+		<script src="../js/MathTrialsController.js"></script>
+	</head>
+	<body onload="config = new MathTrialsConfig(); client = new MathTrialsController(config); client.init()">
+		<h1>MathTrials Controller <span id="versionSpan"></span></h1>
+		<h2 id="stateHeader">State</h2>
+		<h2 id="subStateHeader">SubState</h2>
+		<table>
+			<tr id="signInRow">
+				<td class="setup">
+					<input class="setup" id="accessTokenInput" type="text" value="" placeholder="User" oninput="client.onAccessTokenInputChanged()">
+				</td>
+				<td class="setup">
+					<button class="setup" id="signInButton" type="button" onclick="client.assignAccessToken()">signIn</button>
+					<button class="setup" id="signOutButton" type="button" onclick="client.clearAccessToken()">signOut</button>
+				</td>
+				<td class="tick" id="signedInCell"></td>
+			</tr>
+			<tr id="partnerRow">
+				<td class="setup">
+					<input class="setup" id="partnerClientIdInput" type="text" value="" placeholder="Responder" oninput="client.onPartnerClientIdInputChanged()">
+				</td>
+				<td class="setup">
+					<button class="setup" id="assignPartnerButton" type="button" onclick="client.assignPartner()">Assign</button>
+					<button class="setup" id="unassignPartnerButton" type="button" onclick="client.unassignPartner()">Unassign</button>
+				</td>
+				<td class="tick" id="interactingCell"></td>
+			</tr>
+			<tr id="participantRow">
+				<td class="setup">
+					<input class="setup" id="participantIdInput" type="text" value="" placeholder="Participant" oninput="client.onParticipantIdInputChanged()">
+				</td>
+				<td class="setup">
+					<button class="setup" id="setParticipantIdButton" type="button" onclick="client.setParticipantId()">Set</button>
+					<button class="setup" id="clearParticipantIdButton" type="button" onclick="client.clearParticipantId()">Clear</button>
+				</td>
+				<td class="tick" id="participantOkCell"></td>
+			</tr>
+			<tr id="trialCtrRow">
+				<td></td>
+				<td class="setup">
+					<button class="setup" id="startTrialsButton" type="button" onclick="client.startTrials()">Start</button>
+					<button class="setup" id="cancelTrialsButton" type="button" onclick="client.cancelTrials()">Cancel</button>
+				</td>
+				<td class="tick" id="trialsRunningCell"></td>
+			</tr>
+		</table>
+		<table id="resultTable">
+			<tr>
+				<th class="center result">Part</th>
+				<th class="center result">Corr</th>
+				<th class="center result">Incorr</th>
+				<th class="center result">AvgDt</th>
+				<th class="center result">Saved</th>
+			</tr>
+			<tr>
+				<td class="result" id="participantIdCell"></td>
+				<td class="result" id="noOfCorrCell"></td>
+				<td class="result" id="noOfIncorrCell"></td>
+				<td class="result" id="avgResponseDtCell"></td>
+				<td class="result" id="noOfSavedCell"></td>
+			</tr>
+			<tr>
+				<td id="downloadCell" class="setup" colspan="5"><a id="downloadLink" class="download">Download</a></td>
+			</tr>
+		</table>
+	</body>
+</html>

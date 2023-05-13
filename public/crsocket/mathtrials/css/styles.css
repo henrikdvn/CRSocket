@@ -1,0 +1,58 @@
+/* Common */
+
+body {font-family: sans-serif; font-size: 16px; padding: 0; margin: 1ex}
+
+input, button, a {font-family: sans-serif; font-size: 1em}
+
+table {border-collapse:collapse; margin: auto}
+
+h1, h2, td, th, input, button, a {text-align: center}
+
+h1, h2 {height: 1.5em; padding: 0; margin: 0}
+h1 {font-size: 1.5em}
+h2 {font-size: 1.2em}
+
+td, th {padding: 1ex 0 1ex 0}
+th {font-weight: bold}
+
+input, button, a {font-weight: bold; padding: 1ex; width: 13ex; border: 2px solid black; margin: auto}
+input {color: #000; background-color: #fff; border-radius: 0}
+button, a {background-color: #eee; border-radius: 1ex}
+button {color: #000}
+a {color: #ccc; text-decoration: none; display: block}
+
+
+/* Controller */
+
+td.setup {padding: 1ex}
+td.tick {width: 2ex; font-size: 1.5em; font-weight: bold}
+
+td.confirmed {color: #0a0}
+td.valid {color: #000}
+td.invalid {color: #f00}
+
+#resultTable {margin-top: 2ex}
+th.result, td.result {width: 7ex; border: 1px solid black}
+
+#downloadCell {padding-top: 3ex}
+
+/* Responder */
+
+#taskTable {margin-top: 2ex}
+
+td.task {font-size:2em; width:15ex; height: 5ex}
+#questionCell {font-weight:bold; height: 2ex}
+#answerInput {width: 6ex}
+#answerButton {width: 10ex}
+
+/* Pseudo-classes */
+
+input:invalid {color: #f00; background-color: #fff}
+input:placeholder-shown {background-color: #fff; border-color: red}
+input:read-only {color: #444; background-color: #fff}
+
+button:active, a:active {color: #000; background-color: #ddd}
+button:disabled {color: #888}
+a:link {color: #000}
+
+

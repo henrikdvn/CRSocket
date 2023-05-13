@@ -1,0 +1,43 @@
+<body>
+	<h1>Terminology</h1>
+	<dl>
+		<dt id="crSocket">crSocket</dt>
+		<dd>A CRSocket JavaScript object.</dd>
+		
+		<dt id="crSocket_client">crSocket client</dt>
+		<dd>An active web app process that is able to communicate with a partnerClient by means of a crSocket.</dd>
+		
+		<dt id="name">clientRole</dt>
+		<dd>The role of a given crSocket client: either <q class="name">controller</q> or <q class="name">responder</q>.</dd>
+		
+		<dt id="partnerClient">partnerClient</dt>
+		<dd>
+			The crSocket client with which a client is currently communicating.
+			Only clients with matching appIds and complementary clientRoles can interact as partners. A given client can only be assigned to one partnerClient at a time.
+		</dd>
+		
+		<dt id="crSocket_App">crSocket app</dt>
+		<dd>A pair of controller/responder clients designed to communicate with each other.</dd>
+		
+		<dt id="appId">appId</dt>
+		<dd>A string identifying a crSocket app, eg. <q class="name">commtest</q> or <q class="name">mathtrials</q>.</dd>
+		
+		<dt id="clientId">clientId</dt>
+		<dd>A string which identifies crSocket client processes with particular appIds and clientRoles running within a particular browserEngine.</dd>
+		
+		<dt id="partnerClientId">partnerClientId</dt>
+		<dd>The clientId of the crSocket client currently assigned as partnerClient.</dd>
+		
+		<dt id="accessToken">accessToken</dt>
+		<dd>A string which identifies the current user, composed and formatted according to an arbitrary security standard.</dd>
+		
+		<dt id="CRSocket_state">CRSocket state</dt>
+		<dd>The current state of a crSocket.</dd>
+		
+		<dt id="CRSocket_metastate">CRSocket metaState</dt>
+		<dd>A set of crSocket states with some well defined common properties.</dd>
+		
+		<dt id="crEvent">crEvent</dt>
+		<dd>A PHP/JavaScript CREvent object that can be transmitted between crSocket clients.</dd>
+	</dl>
+</body>
