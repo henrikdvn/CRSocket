@@ -1,0 +1,28 @@
+<body>
+	<h1>CRClientIdGen</h1>
+	<p>This class is used to generate a clientId which is unique within the current IP domain</p>
+	<p>This is achieved by means of a full period, 32 bit linear congruential generator</p>
+	<p>The sequence will be repeated when it has generated 1M ids</p>
+	
+	<h2>Contstructor</h2>
+	<dl>
+		<dt>__construct($config)</dt>
+		<dd>
+			<details>
+				<summary>Parameters</summary>
+				<dl>
+					<dt>$config</dt>
+					<dd><a href="?section=PHP&name=CRConfig">CRConfig</a>, required</dd>
+					<dd>Configuration parameters and methods</dd>
+				</dl>
+			</details>
+		</dd>
+	</dl>
+	
+	<h2>Methods</h2>
+	<dl>
+		<dt>getNextClientId() → String</dt>
+		<dd>Returns a string with a unique clientId consisting of 6 digits</dd>
+	</dl>
+</body>
+
