@@ -1,13 +1,16 @@
-<body>
-	<header>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRSocket, CRConfig</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
 		<h1>CRConfig</h1>
 		<p>
 			This class contains configuration properties and methods used by other classes.
 			Subclasses may add and override properties and methods as needed.
 		</p>
-	</header>
-	
-	<main>
 		<h2>Contstructor</h2>
 		<dl>
 			<dt>CRConfig(appId)</dt>
@@ -41,7 +44,7 @@
 			<dt id="minCrEventDt">minCrEventDt</dt>
 			<dd>Number, readOnly, default = 1000</dd>
 			<dd>Minimum delay between ordinary crEvents</dd>
-
+			
 			<dt id="interactingMaxEventOutDt">interactingMaxEventOutDt</dt>
 			<dd>Number, readOnly, default = 10 * 1000</dd>
 			<dd>Max time in millisecs between ping events (or other events) sent to the partnerClient in the interacting state</dd>
@@ -50,7 +53,7 @@
 			<dd>Number, readOnly, default = 5 * 1000</dd>
 			<dd>Max time in millisecs between events sent to the partnerClient in the searching state</dd>
 			<dd>Gaps will be filled with <span class="name">ping</span> events</dd>
-
+			
 			<dt id="partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</dt>
 			<dd>Number, readOnly, default = 20 * 1000</dd>
 			<dd>Max time in millisecs allowed between events received from a partnerClient before it is not considered active</dd>
@@ -151,5 +154,5 @@
 				</details>
 			</dd>
 		</dl>
-	</main>
-</body>
+	</body>
+</html>

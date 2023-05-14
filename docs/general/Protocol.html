@@ -1,99 +1,107 @@
-<body>
-	<h1>Communication protocol</h1>
-	<h2>States</h2>
-	<p>When a crSocket has been activated, it will always be in one of the following states:</p>
-	<dl>
-		<dt>passive</dt>
-		<dd>
-			Entered when the enclosing client is inactive (invisible, offline, paused, or unloading) or the crSocket has not been assigned a clientId.
-		</dd>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRSocket, Protocol</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<h1>Protocol</h1>
+		<h2>States</h2>
+		<p>When a crSocket has been activated, it will always be in one of the following states:</p>
+		<dl>
+			<dt>passive</dt>
+			<dd>
+				Entered when the enclosing client is inactive (invisible, offline, paused, or unloading) or the crSocket has not been assigned a clientId.
+			</dd>
+			
+			<dt>readyToConnect</dt>
+			<dd>
+				Entered when the crSocket is active, but has not connected to an eventSource, either because it has not been assigned an accessToken or because a previous connection attempt has been aborted by the server.
+			</dd>
+			
+			<dt>connecting</dt>
+			<dd>Entered when the crSocket is active, has been assigned an accessToken and the internal eventReceiver is trying to connect to an eventSource.</dd>
+			
+			<dt>readyToPair</dt>
+			<dd>
+				Entered when the crSocket is active, the internal eventReceiver has connected to an eventSource, but does not have a partnerClient, either because it has not been assigned a partnerClientId or because a previous pairing attempt has been rejected.
+			</dd>
+			
+			<dt>searching</dt>
+			<dd>
+				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, but has not received any events from the partnerClient within <a href="?section=JavaScript&name=CRConfig#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs or has received an <a href="#inactive">inactive</a> event from the partnerClient.
+			</dd>
+			
+			<dt>interacting</dt>
+			<dd>
+				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, has received at least one event from the partnerClient within <a href="?section=JavaScript&name=CRConfig#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs and has not received an <a href="#inactive">inactive</a> event from the partnerClient.
+			</dd>
+		</dl>
 		
-		<dt>readyToConnect</dt>
-		<dd>
-			Entered when the crSocket is active, but has not connected to an eventSource, either because it has not been assigned an accessToken or because a previous connection attempt has been aborted by the server.
-		</dd>
+		<h2>Metastates</h2>
+		<p>The states above are grouped into the following metaStates</p>
+		<dl>
+			<dt id="active">active</dt>
+			<dd>
+				The set of states implying that the enclosing client is active (visible, online, not paused, and not unloading)
+				and has been assigned a clientId.
+			</dd>
+			<dd>Includes <span class="name">readyToConnect</span>, <span class="name">connecting</span>, <span class="name">readyToPair</span>, <span class="name">searching</span> and <span class="name">interacting</span></dd>
+			
+			<dt id="connected">connected</dt>
+			<dd>The set of states implying that the crSocket is active and connected to an eventSource</dd>
+			<dd>Includes <span class="name">readyToPair</span>, <span class="name">searching</span> and <span class="name">interacting</span></dd>
+			
+			<dt id="paired">paired</dt>
+			<dd>
+				The set of states implying that the crSocket is active, connected,
+				has been assigned to a partnerClient and has not been rejected by this partner.
+			</dd>
+			<dd>Includes <span class="name">searching</span> and <span class="name">interacting</span></dd>
+		</dl>
 		
-		<dt>connecting</dt>
-		<dd>Entered when the crSocket is active, has been assigned an accessToken and the internal eventReceiver is trying to connect to an eventSource.</dd>
+		<figure>
+			<img src="img/stateMachine.png" alt="State machine overview">
+			<figcaption>State machine overview</figcaption>
+		</figure>
 		
-		<dt>readyToPair</dt>
-		<dd>
-			Entered when the crSocket is active, the internal eventReceiver has connected to an eventSource, but does not have a partnerClient, either because it has not been assigned a partnerClientId or because a previous pairing attempt has been rejected.
-		</dd>
+		<h2>Communication management</h2>
+		<p>
+			Pairing and communication monitoring is managed by means of the following crEvents.
+		</p>
+		<dl>
+			<dt id="ping">ping</dt>
+			<dd>
+				Will be sent to the client identified by the currently assigned partnerClientId with regular intervals when the sender is <span class="name">paired</span> and signify that the sender is ready to interact with the receiver as a partnerClient.
+			</dd>
+			<dd>
+				For controller crSockets, the partnerClientId must be assigned by the enclosing client. For responder crSockets, the partnerClientId can either be assigned by the enclosing client or by a controller crSocket. If no partnerClientId has been assigned, responder crSockets will assign the sender of the first ping event sent from a controller client with matching appId, as partnerClient.
+			</dd>
+			
+			<dt id="reject">reject</dt>
+			<dd>
+				If a crSocket has been assigned a partnerClientId and receives a ping event from a client with a different clientId, it will respond with a reject event with subType <span class="name">assignedToOther</span>. If a ping event is blocked by a server resource, this resource must respond with a reject event with a subType explaining why the ping event was rejected.
+			</dd>
+			<dd>
+				When a crSocket receives a reject event, it will flag the currently assigned partnerClient as rejected. This will lead to an exit from the paired state, which in turn will stop the outgoing ping sequence. The flag will be removed when the clientId is reassigned or another clientId is assigned as partnerClient.
+			</dd>
+			
+			<dt id="unassign">unassign</dt>
+			<dd>
+				If the partnerClientId of a crSocket is unassigned, it must send an unassign event to the previously assigned partnerClient. If this client had the originating client assigned as partner, it will unassign it.
+			</dd>
+			
+			<dt id="inactive">inactive</dt>
+			<dd>Will be sent to the current partnerClient when a crSocket client enters the <span class="name">passive state</span>.</dd>
+			<dd>
+				If the recipient client is in the interacting state, it will immediately enter the searching state without waiting for a partner inactive timeout.
+			</dd>
+		</dl>
 		
-		<dt>searching</dt>
-		<dd>
-			Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, but has not received any events from the partnerClient within <a href="?section=JavaScript&name=CRConfig#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs or has received an <a href="#inactive">inactive</a> event from the partnerClient.
-		</dd>
-		
-		<dt>interacting</dt>
-		<dd>
-			Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, has received at least one event from the partnerClient within <a href="?section=JavaScript&name=CRConfig#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs and has not received an <a href="#inactive">inactive</a> event from the partnerClient.
-		</dd>
-	</dl>
-	
-	<h2>Metastates</h2>
-	<p>The states above are grouped into the following metaStates</p>
-	<dl>
-		<dt id="active">active</dt>
-		<dd>
-			The set of states implying that the enclosing client is active (visible, online, not paused, and not unloading)
-			and has been assigned a clientId.
-		</dd>
-		<dd>Includes <span class="name">readyToConnect</span>, <span class="name">connecting</span>, <span class="name">readyToPair</span>, <span class="name">searching</span> and <span class="name">interacting</span></dd>
-		
-		<dt id="connected">connected</dt>
-		<dd>The set of states implying that the crSocket is active and connected to an eventSource</dd>
-		<dd>Includes <span class="name">readyToPair</span>, <span class="name">searching</span> and <span class="name">interacting</span></dd>
-		
-		<dt id="paired">paired</dt>
-		<dd>
-			The set of states implying that the crSocket is active, connected,
-			has been assigned to a partnerClient and has not been rejected by this partner.
-		</dd>
-		<dd>Includes <span class="name">searching</span> and <span class="name">interacting</span></dd>
-	</dl>
-	
-	<figure>
-		<img src="img/stateMachine.png" alt="State machine overview">
-		<figcaption>State machine overview</figcaption>
-	</figure>
-	
-	<h2>Communication management</h2>
-	<p>
-		Pairing and communication monitoring is managed by means of the following crEvents.
-	</p>
-	<dl>
-		<dt id="ping">ping</dt>
-		<dd>
-			Will be sent to the client identified by the currently assigned partnerClientId with regular intervals when the sender is <span class="name">paired</span> and signify that the sender is ready to interact with the receiver as a partnerClient.
-		</dd>
-		<dd>
-			For controller crSockets, the partnerClientId must be assigned by the enclosing client. For responder crSockets, the partnerClientId can either be assigned by the enclosing client or by a controller crSocket. If no partnerClientId has been assigned, responder crSockets will assign the sender of the first ping event sent from a controller client with matching appId, as partnerClient.
-		</dd>
-		
-		<dt id="reject">reject</dt>
-		<dd>
-			If a crSocket has been assigned a partnerClientId and receives a ping event from a client with a different clientId, it will respond with a reject event with subType <span class="name">assignedToOther</span>. If a ping event is blocked by a server resource, this resource must respond with a reject event with a subType explaining why the ping event was rejected.
-		</dd>
-		<dd>
-			When a crSocket receives a reject event, it will flag the currently assigned partnerClient as rejected. This will lead to an exit from the paired state, which in turn will stop the outgoing ping sequence. The flag will be removed when the clientId is reassigned or another clientId is assigned as partnerClient.
-		</dd>
-		
-		<dt id="unassign">unassign</dt>
-		<dd>
-			If the partnerClientId of a crSocket is unassigned, it must send an unassign event to the previously assigned partnerClient. If this client had the originating client assigned as partner, it will unassign it.
-		</dd>
-		
-		<dt id="inactive">inactive</dt>
-		<dd>Will be sent to the current partnerClient when a crSocket client enters the <span class="name">passive state</span>.</dd>
-		<dd>
-			If the recipient client is in the interacting state, it will immediately enter the searching state without waiting for a partner inactive timeout.
-		</dd>
-	</dl>
-	
-	<h2>Invalid event handling</h2>
-	<p>
-		Events with mismatching appIds and clientRoles will always be blocked by the server and crSockets will only forward crEvents from their currently assigned partnerClient to their enclosing client. With the exception of ping events, both server resources and crSockets will ignore invalid events without responding to them.
-	</p>
-</body>
+		<h2>Invalid event handling</h2>
+		<p>
+			Events with mismatching appIds and clientRoles will always be blocked by the server and crSockets will only forward crEvents from their currently assigned partnerClient to their enclosing client. With the exception of ping events, both server resources and crSockets will ignore invalid events without responding to them.
+		</p>
+	</body>
+</html>

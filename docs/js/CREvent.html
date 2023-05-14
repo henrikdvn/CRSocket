@@ -1,10 +1,14 @@
-<body>
-	<header>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRSocket, CREvent</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
 		<h1>CREvent</h1>
 		<p>This class represents an event sent between controller and responder clients</p>
-	</header>
-	
-	<main>
+		
 		<h2>Contstructor</h2>
 		
 		<dl>
@@ -35,7 +39,7 @@
 			<dd>Array, default = []</dd>
 			<dd>Array of strings or values that will be correctly converted when default JavaScript string conversion is applied</dd>
 			<dd>The strings must not contain the <a href="?section=JavaScript&name=CRConfig#eventDataSplitChar">$eventDataSplitChar</a> ("," by default)</dd>
-
+			
 			<dt>buffered</dt>
 			<dd>boolean, default = false</dd>
 			<dd>If true, the event will be saved if the client is offline and sent (if possible) when it becomes online</dd>
@@ -135,6 +139,5 @@
 			<dd>Sends the event if it contains the required properties and credentials to be sent</dd>
 			<dd>Credentials are evaluated at the server</dd>
 		</dl>
-	</main>
-	
-</body>
+	</body>
+</html>

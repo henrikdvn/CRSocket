@@ -1,90 +1,98 @@
-<body>
-	<h1>CRStateMachine</h1>
-	<p>
-		This class implements basic state management functions.
-	</p>
-	
-	<h2>Contstructor</h2>
-	<dl>
-		<dt>CRStateMachine()</dt>
-	</dl>
-	
-	<h2>Properties</h2>
-	<dl>
-		<dt>state</dt>
-		<dd>String, readOnly</dd>
-		<dd>The current state</dd>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRSocket, CRStateMachine</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<h1>CRStateMachine</h1>
+		<p>
+			This class implements basic state management functions.
+		</p>
 		
-		<dt>subState</dt>
-		<dd>String, readOnly</dd>
-		<dd>The current subState</dd>
+		<h2>Contstructor</h2>
+		<dl>
+			<dt>CRStateMachine()</dt>
+		</dl>
 		
-		<dt>prevState</dt>
-		<dd>String, readOnly</dd>
-		<dd>The previous state</dd>
-	</dl>
-	
-	<h2>Methods</h2>
-	<dl>
-		<dt>addEventListener(type, listener)</dt>
-		<dd>Adds an event listener to an event type
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt>type</dt>
-					<dd>String, required</dd>
-					<dd>The event type</dd>
-					
-					<dt>listener</dt>
-					<dd>Function(event), required</dd>
-					<dd>A function which is called when the event is delivered</dd>
-				</dl>
-			</details>
-		</dd>
+		<h2>Properties</h2>
+		<dl>
+			<dt>state</dt>
+			<dd>String, readOnly</dd>
+			<dd>The current state</dd>
+			
+			<dt>subState</dt>
+			<dd>String, readOnly</dd>
+			<dd>The current subState</dd>
+			
+			<dt>prevState</dt>
+			<dd>String, readOnly</dd>
+			<dd>The previous state</dd>
+		</dl>
 		
-		<dt>removeEventListener(type, listener)</dt>
-		<dd>Removes an event listener
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt>type</dt>
-					<dd>String, required</dd>
-					<dd>The event type</dd>
-					
-					<dt>listener</dt>
-					<dd>Function(event), required</dd>
-					<dd>The event listener function</dd>
-				</dl>
-			</details>
-		</dd>
-	</dl>
-	
-	<h2>Events</h2>
-	<dl>
-		<dt>stateChanged</dt>
-		<dd>MessageEvent
-			<dd>delivered when the state has changed.
+		<h2>Methods</h2>
+		<dl>
+			<dt>addEventListener(type, listener)</dt>
+			<dd>Adds an event listener to an event type
 				<details>
-					<summary>detail properties</summary>
+					<summary>Parameters</summary>
 					<dl>
-						<dt>state</dt>
-						<dd>String
-							<dd>The name of the new state</dd>
+						<dt>type</dt>
+						<dd>String, required</dd>
+						<dd>The event type</dd>
+						
+						<dt>listener</dt>
+						<dd>Function(event), required</dd>
+						<dd>A function which is called when the event is delivered</dd>
 					</dl>
 				</details>
 			</dd>
 			
-			<dt>subStateChanged</dt>
+			<dt>removeEventListener(type, listener)</dt>
+			<dd>Removes an event listener
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>type</dt>
+						<dd>String, required</dd>
+						<dd>The event type</dd>
+						
+						<dt>listener</dt>
+						<dd>Function(event), required</dd>
+						<dd>The event listener function</dd>
+					</dl>
+				</details>
+			</dd>
+		</dl>
+		
+		<h2>Events</h2>
+		<dl>
+			<dt>stateChanged</dt>
 			<dd>MessageEvent
-				<dd>delivered when the subState has changed.
+				<dd>delivered when the state has changed.
 					<details>
 						<summary>detail properties</summary>
 						<dl>
-							<dt>subState</dt>
-							<dd>String</dd>
-							<dd>The name of the new subState</dd>
+							<dt>state</dt>
+							<dd>String
+								<dd>The name of the new state</dd>
 						</dl>
 					</details>
 				</dd>
-			</dl>
-</body>
+				
+				<dt>subStateChanged</dt>
+				<dd>MessageEvent
+					<dd>delivered when the subState has changed.
+						<details>
+							<summary>detail properties</summary>
+							<dl>
+								<dt>subState</dt>
+								<dd>String</dd>
+								<dd>The name of the new subState</dd>
+							</dl>
+						</details>
+					</dd>
+				</dl>
+	</body>
+</html>

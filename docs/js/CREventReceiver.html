@@ -1,80 +1,88 @@
-<body>
-	<h1>CREventReceiver</h1>
-	<p>This class extends <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a></p>
-	<p>It is used to receive events by means of the HTML EventSource interface</p>
-	<h2>Contstructor</h2>
-	<dl>
-		<dt>CREventReceiver(config, clientRole)</dt>
-		<dd>
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt>config</dt>
-					<dd><a href="?section=PHP&name=CRConfig">CRConfig</a>, required</dd>
-					<dd>Configuration parameters and methods</dd>
-					
-					<dt>clientRole</dt>
-					<dd>String, required</dd>
-					<dd>The role of the client ("controller" or "responder")</dd>
-				</dl>
-			</details>
-		</dd>
-	</dl>
-	
-	<h2>Properties</h2>
-	<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> properties</p>
-	<dl>
-		<dt>clientActive</dt>
-		<dd>Boolean, writeOnly</dd>
-		<dd>Indicates whether the client is active or not</dd>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRSocket, CREventReceiver</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<h1>CREventReceiver</h1>
+		<p>This class extends <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a></p>
+		<p>It is used to receive events by means of the HTML EventSource interface</p>
+		<h2>Contstructor</h2>
+		<dl>
+			<dt>CREventReceiver(config, clientRole)</dt>
+			<dd>
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>config</dt>
+						<dd><a href="?section=PHP&name=CRConfig">CRConfig</a>, required</dd>
+						<dd>Configuration parameters and methods</dd>
+						
+						<dt>clientRole</dt>
+						<dd>String, required</dd>
+						<dd>The role of the client ("controller" or "responder")</dd>
+					</dl>
+				</details>
+			</dd>
+		</dl>
 		
-		<dt>clientId</dt>
-		<dd>String, writeOnly</dd>
-		<dd>The current clientId</dd>
+		<h2>Properties</h2>
+		<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> properties</p>
+		<dl>
+			<dt>clientActive</dt>
+			<dd>Boolean, writeOnly</dd>
+			<dd>Indicates whether the client is active or not</dd>
+			
+			<dt>clientId</dt>
+			<dd>String, writeOnly</dd>
+			<dd>The current clientId</dd>
+			
+			<dt>accessToken</dt>
+			<dd>String, writeOnly</dd>
+			<dd>The current accessToken</dd>
+		</dl>
 		
-		<dt>accessToken</dt>
-		<dd>String, writeOnly</dd>
-		<dd>The current accessToken</dd>
-	</dl>
-	
-	<h2>Methods</h2>
-	<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> methods</p>
-	<dl>
-		<dt>Init()</dt>
-		<dd>Initiates dynamic variables and activates the object</dd>
-	</dl>
-	
-	<h2>Events</h2>
-	<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> events</p>
-	<dl>
-		<dt>crEventReceived</dt>
-		<dd><a href="?section=JavaScript&name=CREvent">CREvent</a></dd>
-		<dd>Delivered when a crEvent has been received</dd>
-	</dl>
-	
-	<h2>States</h2>
-	<dl>
-		<dt>closed</dt>
-		<dd>The eventSource is closed, either:
-			<ul>
-				<li>because the client is not active,</li>
-				<li>because it has not been assigned the required properties, or</li>
-				<li>because the connection has been shut down.</li>
-			</ul>
-		</dd>
+		<h2>Methods</h2>
+		<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> methods</p>
+		<dl>
+			<dt>Init()</dt>
+			<dd>Initiates dynamic variables and activates the object</dd>
+		</dl>
 		
-		<dt>opening</dt>
-		<dd>
-			The eventSource is opening
-		</dd>
+		<h2>Events</h2>
+		<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> events</p>
+		<dl>
+			<dt>crEventReceived</dt>
+			<dd><a href="?section=JavaScript&name=CREvent">CREvent</a></dd>
+			<dd>Delivered when a crEvent has been received</dd>
+		</dl>
 		
-		<dt>open</dt>
-		<dd>The eventSource is open and able to receive events</dd>
-		
-		<dt>closing</dt>
-		<dd>The eventSource is closing</dd>
-		
-		<dt>aborted</dt>
-		<dd>The eventSource has been aborted for some reason, possibly indicated by the subState</dd>
-	</dl>
-</body>
+		<h2>States</h2>
+		<dl>
+			<dt>closed</dt>
+			<dd>The eventSource is closed, either:
+				<ul>
+					<li>because the client is not active,</li>
+					<li>because it has not been assigned the required properties, or</li>
+					<li>because the connection has been shut down.</li>
+				</ul>
+			</dd>
+			
+			<dt>opening</dt>
+			<dd>
+				The eventSource is opening
+			</dd>
+			
+			<dt>open</dt>
+			<dd>The eventSource is open and able to receive events</dd>
+			
+			<dt>closing</dt>
+			<dd>The eventSource is closing</dd>
+			
+			<dt>aborted</dt>
+			<dd>The eventSource has been aborted for some reason, possibly indicated by the subState</dd>
+		</dl>
+	</body>
+</html>

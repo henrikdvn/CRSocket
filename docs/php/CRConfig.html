@@ -1,194 +1,202 @@
-<body>
-	<h1>CRConfig</h1>
-	<p>
-		This class contains configuration properties and methods used by other classes.
-		Subclasses may add and override properties and methods as needed.
-	</p>
-	
-	<h2>Contstructor</h2>
-	<dl>
-		<dt>__construct($resourceName, $appLogRoot, $appDataRoot, $crsSockRoot, $crsDataRoot)</dt>
-		<dd>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CRSocket, CRConfig</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link href="../css/styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<h1>CRConfig</h1>
+		<p>
+			This class contains configuration properties and methods used by other classes.
+			Subclasses may add and override properties and methods as needed.
+		</p>
+		
+		<h2>Contstructor</h2>
+		<dl>
+			<dt>__construct($resourceName, $appLogRoot, $appDataRoot, $crsSockRoot, $crsDataRoot)</dt>
+			<dd>
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>$resourceName</dt>
+						<dd>String, required</dd>
+						<dd>Name of the current resource, eg. "clientid", "eventsource", "sendevent"</dd>
+						
+						<dt>$appLogRoot</dt>
+						<dd>String, required</dd>
+						<dd>Path to the directory used for logging</dd>
+						
+						<dt>$appDataRoot</dt>
+						<dd>String, required</dd>
+						<dd>Path to the directory used for data files</dd>
+						
+						<dt>$crsSockRoot</dt>
+						<dd>String, required</dd>
+						<dd>Path to the directory used for socket files</dd>
+						
+						<dt>$crsDataRoot</dt>
+						<dd>String, required</dd>
+						<dd>Path to the directory used for data files related to the current IP domain</dd>
+					</dl>
+				</details>
+			</dd>
+		</dl>
+		
+		<h2>Properties</h2>
+		<dl>
+			<dt id="resourceName">$resourceName</dt>
+			<dd>String</dd>
+			<dd>Name of the current resource, eg. "clientid", "eventsource", "sendevent"</dd>
+			<dd>initiated by the constructor</dd>
+			
+			<dt id="appLogRoot">$appLogRoot</dt>
+			<dd>String</dd>
+			<dd>Path to the directory used for logging</dd>
+			<dd>initiated by the constructor</dd>
+			
+			<dt id="appDataRoot">$appDataRoot</dt>
+			<dd>String</dd>
+			<dd>Path to the directory used for data files</dd>
+			<dd>initiated by the constructor</dd>
+			
+			<dt id="crsSockRoot">$crsSockRoot</dt>
+			<dd>String</dd>
+			<dd>Path to the directory used for socket files</dd>
+			<dd>initiated by the constructor</dd>
+			
+			<dt id="crsDataRoot">$crsDataRoot</dt>
+			<dd>String</dd>
+			<dd>Path to the directory used for data files related to the current IP domain</dd>
+			<dd>initiated by the constructor</dd>
+			
+			<dt id="socketAcceptDtSecs">$socketAcceptDtSecs</dt>
+			<dd>Integer, readonly, default = 10</dd>
+			<dd>Max amount of secs before socket conditions are checked by a <a href="?section=PHP&name=CREventSource">CREventSource</a></dd>
+			
+			<dt id="maxPrevAliveDtSecs">$maxPrevAliveDtSecs</dt>
+			<dd>Integer, default = 25</dd>
+			<dd>Max amount of secs allowed between <span class="name">alive</span> events in a <a href="?section=PHP&name=CREventSource">CREventSource</a> before the requesting client is considered inactive</dd>
+			
+			<dt id="sendEventRetryDtSecs">$sendEventRetryDtSecs</dt>
+			<dd>Integer, default = 1</dd>
+			<dd>Delay between attempts to establish connection to a socket by a <a href="?section=PHP&name=CREventSender">CREventSender</a></dd>
+			
+			<dt id="sendEventMaxAttempts">$sendEventMaxAttempts</dt>
+			<dd>Integer, default = 4</dd>
+			<dd>Max no of attempts to establish connection to a socket by a CREventSender</dd>
+			
+			<dt id="maxEventDataStrLength">$maxEventDataStrLength</dt>
+			<dd>Integer, default = 8192</dd>
+			<dd>Max length of data strings that can be transmitted between a <a href="?section=PHP&name=CREventSender">CREventSender</a> and a <a href="?section=PHP&name=CREventSource">CREventSource</a></dd>
+			
+			<dt id="eventDataSplitChar">$eventDataSplitChar</dt>
+			<dd>String, default = ","</dd>
+			<dd>Character used to split data elements in server-sent event data strings</dd>
+		</dl>
+		
+		<h2>Methods</h2>
+		<dl>
+			<dt>isAuthorized($clientRole, $accessToken) → Boolean</dt>
+			<dd>Returns true if the $accessToken is authorized for the $clientRole
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt id="name">clientRole</dt>
+						<dd>String, required</dd>
+						<dd>The role of the sender client ("controller" or "responder")</dd>
+						
+						<dt id="name">accessToken</dt>
+						<dd>String, required</dd>
+						<dd>A string containing the accessToken used to identify the requesting user and determine access rights</dd>
+					</dl>
+				</details>
+			</dd>
+			
+			<dt id="acceptAtEventSender">acceptAtEventSender($crClient, $crEvent) → Boolean</dt>
+			<dd>Returns true if the <a href="?section=PHP&name=CREvent">$crEvent</a> is accepted for sending from the requesting <a href="?section=PHP&name=CRClient">$crClient</a></dd>
+			<dd>It can also modify the event and perform various other actions</dd>
 			<details>
 				<summary>Parameters</summary>
 				<dl>
-					<dt>$resourceName</dt>
-					<dd>String, required</dd>
-					<dd>Name of the current resource, eg. "clientid", "eventsource", "sendevent"</dd>
+					<dt id="name">$crClient</dt>
+					<dd><a href="?section=PHP&name=CRClient">CRClient</a></dd>
+					<dd>The requesting client</dd>
 					
-					<dt>$appLogRoot</dt>
-					<dd>String, required</dd>
-					<dd>Path to the directory used for logging</dd>
+					<dt id="name">$crEvent</dt>
+					<dd><a href="?section=PHP&name=CREvent">CREvent</a>, required</dd>
+					<dd>A crEvent</dd>
+				</dl>
+			</details>
+			</dd>
+			
+			<dt id="acceptAtEventSource">acceptAtEventSource($crClient, $crEvent) → Boolean</dt>
+			<dd>Returns true if the <a href="?section=PHP&name=CREvent">$crEvent</a> is accepted for forwarding to the requesting <a href="?section=PHP&name=CRClient">$crClient</a></dd>
+			<dd>It can also modify the event and perform various other actions</dd>
+			<details>
+				<summary>Parameters</summary>
+				<dl>
+					<dt id="name">$crClient</dt>
+					<dd><a href="?section=PHP&name=CRClient">CRClient</a></dd>
+					<dd>The requesting client</dd>
 					
-					<dt>$appDataRoot</dt>
-					<dd>String, required</dd>
-					<dd>Path to the directory used for data files</dd>
-					
-					<dt>$crsSockRoot</dt>
-					<dd>String, required</dd>
-					<dd>Path to the directory used for socket files</dd>
-					
-					<dt>$crsDataRoot</dt>
-					<dd>String, required</dd>
-					<dd>Path to the directory used for data files related to the current IP domain</dd>
+					<dt id="name">$crEvent</dt>
+					<dd><a href="?section=PHP&name=CREvent">CREvent</a>, required</dd>
+					<dd>A crEvent</dd>
 				</dl>
 			</details>
-		</dd>
-	</dl>
-	
-	<h2>Properties</h2>
-	<dl>
-		<dt id="resourceName">$resourceName</dt>
-		<dd>String</dd>
-		<dd>Name of the current resource, eg. "clientid", "eventsource", "sendevent"</dd>
-		<dd>initiated by the constructor</dd>
-		
-		<dt id="appLogRoot">$appLogRoot</dt>
-		<dd>String</dd>
-		<dd>Path to the directory used for logging</dd>
-		<dd>initiated by the constructor</dd>
-		
-		<dt id="appDataRoot">$appDataRoot</dt>
-		<dd>String</dd>
-		<dd>Path to the directory used for data files</dd>
-		<dd>initiated by the constructor</dd>
-		
-		<dt id="crsSockRoot">$crsSockRoot</dt>
-		<dd>String</dd>
-		<dd>Path to the directory used for socket files</dd>
-		<dd>initiated by the constructor</dd>
-		
-		<dt id="crsDataRoot">$crsDataRoot</dt>
-		<dd>String</dd>
-		<dd>Path to the directory used for data files related to the current IP domain</dd>
-		<dd>initiated by the constructor</dd>
-		
-		<dt id="socketAcceptDtSecs">$socketAcceptDtSecs</dt>
-		<dd>Integer, readonly, default = 10</dd>
-		<dd>Max amount of secs before socket conditions are checked by a <a href="?section=PHP&name=CREventSource">CREventSource</a></dd>
-		
-		<dt id="maxPrevAliveDtSecs">$maxPrevAliveDtSecs</dt>
-		<dd>Integer, default = 25</dd>
-		<dd>Max amount of secs allowed between <span class="name">alive</span> events in a <a href="?section=PHP&name=CREventSource">CREventSource</a> before the requesting client is considered inactive</dd>
-		
-		<dt id="sendEventRetryDtSecs">$sendEventRetryDtSecs</dt>
-		<dd>Integer, default = 1</dd>
-		<dd>Delay between attempts to establish connection to a socket by a <a href="?section=PHP&name=CREventSender">CREventSender</a></dd>
-		
-		<dt id="sendEventMaxAttempts">$sendEventMaxAttempts</dt>
-		<dd>Integer, default = 4</dd>
-		<dd>Max no of attempts to establish connection to a socket by a CREventSender</dd>
-		
-		<dt id="maxEventDataStrLength">$maxEventDataStrLength</dt>
-		<dd>Integer, default = 8192</dd>
-		<dd>Max length of data strings that can be transmitted between a <a href="?section=PHP&name=CREventSender">CREventSender</a> and a <a href="?section=PHP&name=CREventSource">CREventSource</a></dd>
-		
-		<dt id="eventDataSplitChar">$eventDataSplitChar</dt>
-		<dd>String, default = ","</dd>
-		<dd>Character used to split data elements in server-sent event data strings</dd>
-	</dl>
-	
-	<h2>Methods</h2>
-	<dl>
-		<dt>isAuthorized($clientRole, $accessToken) → Boolean</dt>
-		<dd>Returns true if the $accessToken is authorized for the $clientRole
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt id="name">clientRole</dt>
-					<dd>String, required</dd>
-					<dd>The role of the sender client ("controller" or "responder")</dd>
-					
-					<dt id="name">accessToken</dt>
-					<dd>String, required</dd>
-					<dd>A string containing the accessToken used to identify the requesting user and determine access rights</dd>
-				</dl>
-			</details>
-		</dd>
-		
-		<dt id="acceptAtEventSender">acceptAtEventSender($crClient, $crEvent) → Boolean</dt>
-		<dd>Returns true if the <a href="?section=PHP&name=CREvent">$crEvent</a> is accepted for sending from the requesting <a href="?section=PHP&name=CRClient">$crClient</a></dd>
-		<dd>It can also modify the event and perform various other actions</dd>
-		<details>
-			<summary>Parameters</summary>
-			<dl>
-				<dt id="name">$crClient</dt>
-				<dd><a href="?section=PHP&name=CRClient">CRClient</a></dd>
-				<dd>The requesting client</dd>
-				
-				<dt id="name">$crEvent</dt>
-				<dd><a href="?section=PHP&name=CREvent">CREvent</a>, required</dd>
-				<dd>A crEvent</dd>
-			</dl>
-		</details>
-		</dd>
-		
-		<dt id="acceptAtEventSource">acceptAtEventSource($crClient, $crEvent) → Boolean</dt>
-		<dd>Returns true if the <a href="?section=PHP&name=CREvent">$crEvent</a> is accepted for forwarding to the requesting <a href="?section=PHP&name=CRClient">$crClient</a></dd>
-		<dd>It can also modify the event and perform various other actions</dd>
-		<details>
-			<summary>Parameters</summary>
-			<dl>
-				<dt id="name">$crClient</dt>
-				<dd><a href="?section=PHP&name=CRClient">CRClient</a></dd>
-				<dd>The requesting client</dd>
-				
-				<dt id="name">$crEvent</dt>
-				<dd><a href="?section=PHP&name=CREvent">CREvent</a>, required</dd>
-				<dd>A crEvent</dd>
-			</dl>
-		</details>
-		</dd>
-		
-		<dt>isValidClientId($clientId) → Boolean</dt>
-		<dd>Returns true if the $clientId is syntactically correct.
-			The default implementation requires a string consisting of 6 digits.
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt>$clientId</dt>
-					<dd>String, required</dd>
-					<dd>A client id</dd>
-				</dl>
-			</details>
-		</dd>
-		
-		<dt>isValidClientRole($clientRole) → Boolean</dt>
-		<dd>Returns true if the $clientRole is syntactically correct ("controller" or "responder").
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt>$clientRole</dt>
-					<dd>String, required</dd>
-					<dd>A client role</dd>
-				</dl>
-			</details>
-		</dd>
-		
-		<dt>isValidAccessToken($accessToken) → Boolean</dt>
-		<dd>Returns true if the $accessToken is syntactically correct.
-			The default implementation requires a non-empty string of printable Ascii characters, except space.
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt>$accessToken</dt>
-					<dd>String, required</dd>
-					<dd>An access token</dd>
-				</dl>
-			</details>
-		</dd>
-		
-		<dt>logMsg($msg)</dt>
-		<dd>Logs a message to a file corresponding to the current <a href="#resourceName">$resourceName</a> in the assigned <a href="#appLogRoot">$appLogRoot</a> directory
-			<details>
-				<summary>Parameters</summary>
-				<dl>
-					<dt>$msg</dt>
-					<dd>String, required</dd>
-					<dd>The message string to be logged</dd>
-				</dl>
-			</details>
-		</dd>
-	</dl>
-</body>
+			</dd>
+			
+			<dt>isValidClientId($clientId) → Boolean</dt>
+			<dd>Returns true if the $clientId is syntactically correct.
+				The default implementation requires a string consisting of 6 digits.
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>$clientId</dt>
+						<dd>String, required</dd>
+						<dd>A client id</dd>
+					</dl>
+				</details>
+			</dd>
+			
+			<dt>isValidClientRole($clientRole) → Boolean</dt>
+			<dd>Returns true if the $clientRole is syntactically correct ("controller" or "responder").
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>$clientRole</dt>
+						<dd>String, required</dd>
+						<dd>A client role</dd>
+					</dl>
+				</details>
+			</dd>
+			
+			<dt>isValidAccessToken($accessToken) → Boolean</dt>
+			<dd>Returns true if the $accessToken is syntactically correct.
+				The default implementation requires a non-empty string of printable Ascii characters, except space.
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>$accessToken</dt>
+						<dd>String, required</dd>
+						<dd>An access token</dd>
+					</dl>
+				</details>
+			</dd>
+			
+			<dt>logMsg($msg)</dt>
+			<dd>Logs a message to a file corresponding to the current <a href="#resourceName">$resourceName</a> in the assigned <a href="#appLogRoot">$appLogRoot</a> directory
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>$msg</dt>
+						<dd>String, required</dd>
+						<dd>The message string to be logged</dd>
+					</dl>
+				</details>
+			</dd>
+		</dl>
+	</body>
+</html>
 
