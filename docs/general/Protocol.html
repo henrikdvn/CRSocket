@@ -30,12 +30,12 @@
 			
 			<dt>searching</dt>
 			<dd>
-				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, but has not received any events from the partnerClient within <a href="?section=JavaScript&name=CRConfig#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs or has received an <a href="#inactive">inactive</a> event from the partnerClient.
+				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, but has not received any events from the partnerClient within <a href="../js/CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs or has received an <a href="#inactive">inactive</a> event from the partnerClient.
 			</dd>
 			
 			<dt>interacting</dt>
 			<dd>
-				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, has received at least one event from the partnerClient within <a href="?section=JavaScript&name=CRConfig#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs and has not received an <a href="#inactive">inactive</a> event from the partnerClient.
+				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, has received at least one event from the partnerClient within <a href="../js/CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs and has not received an <a href="#inactive">inactive</a> event from the partnerClient.
 			</dd>
 		</dl>
 		
@@ -62,7 +62,7 @@
 		</dl>
 		
 		<figure>
-			<img src="img/stateMachine.png" alt="State machine overview">
+			<img src="../img/stateMachine.png" alt="State machine overview">
 			<figcaption>State machine overview</figcaption>
 		</figure>
 		
@@ -93,7 +93,7 @@
 			</dd>
 			
 			<dt id="inactive">inactive</dt>
-			<dd>Will be sent to the current partnerClient when a crSocket client enters the <span class="name">passive state</span>.</dd>
+			<dd>Will be sent to the current partnerClient when a crSocket client enters the <span class="name">passive</span> state.</dd>
 			<dd>
 				If the recipient client is in the interacting state, it will immediately enter the searching state without waiting for a partner inactive timeout.
 			</dd>

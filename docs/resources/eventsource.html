@@ -43,7 +43,7 @@
 			<dt id="alive">alive</dt>
 			<dd>A messageEvent signalling that the recipient client is alive</dd>
 			<dd>
-				The eventSource should be closed when it has not received such events for <a href="?section=PHP&name=CRConfig#maxPrevAliveDtSecs">maxPrevAliveDtSecs</a> millisecs.
+				The eventSource should be closed when it has not received such events for <a href="../php/CRConfig.html#maxPrevAliveDtSecs">maxPrevAliveDtSecs</a> millisecs.
 			</dd>
 			
 			<dt id="close">close</dt>
@@ -95,21 +95,21 @@
 			<dd>Only events from clients with a matching appId and complimentary client role will be forwarded to the recipitent client</dd>
 		</dl>
 		<p>
-			If the <a href="?section=JavaScript&name=CREvent#interceptable">interceptable</a> propety is true
-			it may be blocked or modified by the <a href="?section=PHP&name=CRConfig#acceptAtEventSource">acceptAtEventSource</a> function. This function may also respond with custom crEvents to the other client.
+			If the <a href="../php/CREvent.html#interceptable">interceptable</a> propety is true
+			it may be blocked or modified by the <a href="../php/CRConfig.html#acceptAtEventSource">acceptAtEventSource</a> function. This function may also respond with custom crEvents to the other client.
 		</p>
 		
 		<h3>Outgoing events to other clients</h3>
 		<dl>
 			<dt>crEvent.reject</dt>
 			<dd>
-				A messageEvent containing a crEvent with <a href="?section=PHP&name=CREvent#eventType">eventType</a> <span class="name">reject</span>
+				A messageEvent containing a crEvent with <a href="CREvent.html#eventType">eventType</a> <span class="name">reject</span>
 			</dd>
 			<dd>
-				This event will be returned to the sender if a crEvent with <a href="?section=PHP&name=CREvent#eventType">eventType</a> <span class="name">ping</span> event was not forwarded
+				This event will be returned to the sender if a crEvent with <a href="../php/CREvent.html#eventType">eventType</a> <span class="name">ping</span> event was not forwarded
 			</dd>
 			<dd>
-				The <a href="?section=PHP&name=CREvent#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected
+				The <a href="../php/CREvent.html#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected
 			</dd>
 		</dl>
 	</body>

@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<h1>CRSocket</h1>
-		<p>This class extends <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a></p>
+		<p>This class extends <a href="CRStateMachine.html">CRStateMachine</a></p>
 		<p>It facilitates bidirectional communication between controller and responder clients</p>
 		
 		<h2>Contstructor</h2>
@@ -18,7 +18,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>config</dt>
-						<dd><a href="?section=JavaScript&name=CRConfig">CRConfig</a>, required</dd>
+						<dd><a href="CRConfig.html">CRConfig</a>, required</dd>
 						<dd>Configuration parameters and methods</dd>
 						
 						<dt>clientRole</dt>
@@ -30,7 +30,7 @@
 		</dl>
 		
 		<h2>Properties</h2>
-		<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> properties</p>
+		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> properties</p>
 		<dl>
 			<dt>clientId</dt>
 			<dd>String, readOnly</dd>
@@ -71,13 +71,13 @@
 		</dl>
 		
 		<h2>Methods</h2>
-		<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> methods</p>
+		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> methods</p>
 		<dl>
 			<dt>init()</dt>
 			<dd>Initiates dynamic variables and activates the object</dd>
 			<dt>sendEvent(eventType, eventSubType = "", eventParams = [], buffered = false, logged = false, interceptable = true)</dt>
 			<dd>Generates and sends a CREvent object if the socket is <a href="#readyToSend">readyToSend</a>
-				<dd>See <a href="?section=JavaScript&name=CREventSender">CREventSender.genCrEvent</a> for details.</dd>
+				<dd>See <a href="CREvent.htmlSender">CREventSender.genCrEvent</a> for details.</dd>
 				
 				<dt>localStorageSet(key, value)</dt>
 				<dd>Saves a value in localSorage, with key prepended by the current appId and clientRole (appId_clientRole_key).
@@ -116,7 +116,7 @@
 		</dl>
 		
 		<h2>Events</h2>
-		<p>See also <a href="?section=JavaScript&name=CRStateMachine">CRStateMachine</a> events</p>
+		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> events</p>
 		<dl>
 			<dt>clientIdChanged</dt>
 			<dd>delivers a MessageEvent object when the socket clientId has changed
@@ -138,7 +138,7 @@
 				Delivers a MessageEvent object containing the new value when the socket partnerClientId has changed.
 			</dd>
 			<dt id="eventReceived">eventReceived</dt>
-			<dd>Delivers a <a href="?section=JavaScript&name=CREvent">CREvent</a> object received by the socket</dd>
+			<dd>Delivers a <a href="CREvent.html">CREvent</a> object received by the socket</dd>
 		</dl>
 		
 		<h2>States</h2>
@@ -174,7 +174,7 @@
 			<dd>
 				The socket is <a href="#paired">paired</a> and
 				has received at least one event from the partner within the last
-				<a href="?section=JavaScript&name=CRConfig#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs.
+				<a href="CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs.
 			</dd>
 		</dl>
 	</body>

@@ -9,8 +9,8 @@
 		<h1>sendevent</h1>
 		<p>This resource transmits a messageEvent from the requesting client to a recipient client</p>
 		<p>
-			If the <a href="?section=JavaScript&name=CREvent#interceptable">interceptable</a> propety is true
-			it may be blocked or modified by the <a href="?section=PHP&name=CRConfig#acceptAtEventSource">acceptAtEventSource</a> function. This function may also respond with custom crEvents to the other client via its eventsource instance.
+			If the <a href="../php/CREvent.html#interceptable">interceptable</a> propety is true
+			it may be blocked or modified by the <a href="../php/CRConfig.html#acceptAtEventSource">acceptAtEventSource</a> function. This function may also respond with custom crEvents to the other client via its eventsource instance.
 		</p>
 		<p>The event will only be sent if appropriate credentials have been provided</p>
 		<h2>Request parameters</h2>
@@ -41,13 +41,13 @@
 		<dl>
 			<dt>crEvent.reject</dt>
 			<dd>
-				A messageEvent containing a crEvent with <a href="?section=PHP&name=CREvent#eventType">eventType</a> <span class="name">reject</span>
+				A messageEvent containing a crEvent with <a href="../php/CREvent.html#eventType">eventType</a> <span class="name">reject</span>
 			</dd>
 			<dd>
-				This event will be transmitted to the requesting client via its eventsource instance if a crEvent with <a href="?section=PHP&name=CREvent#eventType">eventType</a> <span class="name">ping</span> event was not forwarded
+				This event will be transmitted to the requesting client via its eventsource instance if a crEvent with <a href="../php/CREvent.html#eventType">eventType</a> <span class="name">ping</span> event was not forwarded
 			</dd>
 			<dd>
-				The <a href="?section=PHP&name=CREvent#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected
+				The <a href="../php/CREvent.html#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected
 			</dd>
 		</dl>
 	</body>
