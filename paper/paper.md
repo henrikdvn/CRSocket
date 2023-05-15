@@ -1,8 +1,9 @@
 ---
 title: 'CRSocket: A web app component facilitating the administration of digital trials from a separate device'
 tags:
+	- research instrument
   - experimental task
-  - develoipmental psychology
+  - developmental psychology
   - digital trial
   - measurement quality
   - web application
