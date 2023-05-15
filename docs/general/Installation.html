@@ -18,13 +18,15 @@
 			<li>
 				Each eventsource session occupies one entry process. This is usually a limited resource in shared web hosting environments.
 			</li>
-			<li>The clientId generator requires that the PHP <a href="https://www.php.net/manual/en/book.gmp.php">GMP library</a> is enabled.</li>
+			<li>
+				The clientId generator requires that the PHP <a href="https://www.php.net/manual/en/book.gmp.php">GMP library</a> is enabled.
+			</li>
 			<li>The PHP <a href="https://www.php.net/manual/en/book.sockets.php">socket extension</a> must be enabled.</li>
 			<li>Migration to PHP 8 will require some minor adjustments.</li>
 		</ul>
 		<h2>File locations</h2>
 		<p>
-			The items in the <span class="name">public</span> directory must be made publically accessible, typically by placing them inside the <span class="name">public_html</span> folder.
+			The items in the <span class="name">public</span> directory must be made publicly accessible, typically by placing them inside the <span class="name">public_html</span> folder.
 		</p>
 		<p>
 			The items in the <span class="name">private</span> directory can be saved anywhere on the server as long as they can be accessed by the public PHP scripts. Directories for logging, sockets, and data require write access.

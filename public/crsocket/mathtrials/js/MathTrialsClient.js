@@ -18,11 +18,14 @@ class MathTrialsClient {
 		this.socket = new CRSocket(config, clientRole);
 		
 		this.versionSpanElem = document.getElementById("versionSpan");
-		
+		this.clientIdSpanElem = document.getElementById("clientIdSpan");
+		this.stateSpanElem = document.getElementById("stateSpan");
+		this.subStateSpanElem = document.getElementById("subStateSpan");
+
 		// stateHeader
 
+		this.clientIdHeaderElem = document.getElementById("clientIdHeader");
 		this.stateHeaderElem = document.getElementById("stateHeader");
-		this.subStateHeaderElem = document.getElementById("subStateHeader");
 
 		// signInRow elements
 
@@ -193,13 +196,14 @@ class MathTrialsClient {
 	// Updates the state header with clientId, clientState and clientSubState
 
 	updateStateHeaders() {
-		var headerComps = [];
-		if (this.socket.clientId) {
-			headerComps.push(this.socket.clientId);
+		this.replaceChildNodesWithText(this.clientIdSpanElem, this.socket.clientId);
+		this.replaceChildNodesWithText(this.stateSpanElem, this.socket.state);
+		if (this.socket.subState) {
+			this.replaceChildNodesWithText(this.subStateSpanElem, " / " + this.socket.subState);
 		}
-		headerComps.push(this.socket.state);
-		this.replaceChildNodesWithText(this.stateHeaderElem, headerComps.join(" - "));
-		this.replaceChildNodesWithText(this.subStateHeaderElem, this.socket.subState);
+		else {
+			this.removeChildNodes(this.subStateSpanElem);
+		}
 	}
 	
 	// Updates the signInRow (accessToken).

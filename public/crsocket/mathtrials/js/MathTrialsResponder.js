@@ -185,9 +185,36 @@ class MathTrialsResponder extends MathTrialsClient {
 	// Updates the partnerRow (accessToken).
 	// Enables the unassign button if the socket is paired.
 
+	/*
+	updatePartnerRow() {
+		this.updateSetupRow(this.partnerClientIdInputElem,
+												this.assignPartnerButtonElem,
+												this.unassignPartnerButtonElem,
+												this.interactingCellElem,
+												this.socket.paired,
+												this.socket.state == "interacting",
+												this.trialState != "started");
+	}
+	
+	updateSetupRow2(inputElem, clearButtonElem, tickCellElem, assigned, confirmed, updateOk) {
+		if (assigned) {
+			//inputElem.setAttribute("readonly", "");
+			clearButtonElem.style.display = "inline";
+			clearButtonElem.disabled = !updateOk;
+			//setButtonElem.style.display = "none";
+		}
+		else {
+			//inputElem.removeAttribute("readonly");
+			//setButtonElem.style.display = "inline";
+			//setButtonElem.disabled = !(inputValid && updateOk);
+			clearButtonElem.style.display = "none";
+		}
+		this.updateTickCell(tickCellElem, true, inputValid, confirmed);
+	}
+*/
 	updatePartnerRow() {
 		this.unassignPartnerButtonElem.disabled = !this.socket.paired;
-		this.updateTickCell(this.interactingCellElem, true, this.partnerClientIdAssigned, this.socket.state == "interacting");
+		this.updateTickCell(this.interactingCellElem, true, this.socket.paired, this.socket.state == "interacting");
 	}
 
 	// Show a given page and hides the other ones.
