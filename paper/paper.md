@@ -1,21 +1,21 @@
 ---
 title: 'CRSocket: A web app component facilitating the administration of digital trials from a separate device'
 tags:
-	- research instrument
-  - experimental task
-  - developmental psychology
-  - digital trial
-  - measurement quality
-  - web application
-  - communication technology
+- research instrument
+- experimental task
+- developmental psychology
+- digital trial
+- measurement quality
+- web application
+- communication technology
 authors:
-  - name: Henrik Dvergsdal
-    orcid: 0000-0002-8515-1670
-    equal-contrib: true
-    affiliation: 1
+- name: Henrik Dvergsdal
+orcid: 0000-0002-8515-1670
+equal-contrib: true
+affiliation: 1
 affiliations:
- - name: Nord University, Norway
-   index: 1
+- name: Nord University, Norway
+index: 1
 date: 29 December 2022
 bibliography: paper.bib
 ---
@@ -66,9 +66,9 @@ The component provides default implementations of resources that must be availab
 * **eventsource**. This resource transmits a stream of events, representing CREvent objects and internal events from the server to the client, formatted as server-sent events.
 * **sendevent**. This resource receives a single event from a client, formatted as an HTTP GET request and transmits it to an eventsource process.
 
- Server-side functionality can be replaced by other implementations as long as the resources described above conform to their respective specifications.
- 
- Both eventsource and sendevent resources may contain server-side event plugin mechanisms that can be used to implement authentication schemes, storage functionality and various types of event processing.
+Server-side functionality can be replaced by other implementations as long as the resources described above conform to their respective specifications.
+
+Both eventsource and sendevent resources may contain server-side event plugin mechanisms that can be used to implement authentication schemes, storage functionality and various types of event processing.
 
 ![Basic architecture](basicArchitecture.png)
 
