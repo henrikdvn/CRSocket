@@ -3,7 +3,7 @@ title: 'CRSocket: A web app component facilitating the administration of digital
 tags:
 - experimental task
 - developmental psychology
-- digital trials
+- digital trial
 - measurement quality
 - web application
 - communication technology
