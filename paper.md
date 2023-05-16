@@ -9,12 +9,12 @@ tags:
  - communication technology
 authors:
  - name: Henrik Dvergsdal
-orcid: 0000-0002-8515-1670
-equal-contrib: true
+   orcid: 0000-0002-8515-1670
+   equal-contrib: true
 affiliation: 1
 affiliations:
  - name: Nord University, Norway
-index: 1
+   index: 1
 date: 16 May 2023
 bibliography: paper.bib
 ---
