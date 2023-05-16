@@ -11,7 +11,7 @@ authors:
  - name: Henrik Dvergsdal
    orcid: 0000-0002-8515-1670
    equal-contrib: true
-affiliation: 1
+   affiliation: 1
 affiliations:
  - name: Nord University, Norway
    index: 1
