@@ -1,19 +1,19 @@
 ---
 title: 'CRSocket: A web app component facilitating the administration of digital trials from a separate device'
 tags:
-- experimental task
-- developmental psychology
-- digital trials
-- measurement quality
-- web application
-- communication technology
+ - experimental task
+ - developmental psychology
+ - digital trials
+ - measurement quality
+ - web application
+ - communication technology
 authors:
-- name: Henrik Dvergsdal
+ - name: Henrik Dvergsdal
 orcid: 0000-0002-8515-1670
 equal-contrib: true
 affiliation: 1
 affiliations:
-- name: Nord University, Norway
+ - name: Nord University, Norway
 index: 1
 date: 16 May 2023
 bibliography: paper.bib
