@@ -17,7 +17,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$config</dt>
-						<dd><a href="CRConfig.html">CRConfig</a>, required</dd>
+						<dd class="dataType"><a href="CRConfig.html">CRConfig</a> object, required</dd>
 						<dd>Configuration parameters and methods</dd>
 					</dl>
 				</details>
@@ -27,11 +27,11 @@
 		<h2>Properties</h2>
 		<dl>
 			<dt id="eventType">$eventType</dt>
-			<dd>String, default = ""</dd>
+			<dd class="dataType">String, default = ""</dd>
 			<dd>Event type</dd>
 			
 			<dt id="eventSubType">$eventSubType</dt>
-			<dd>String, default = ""</dd>
+			<dd class="dataType">String, default = ""</dd>
 			<dd>Optional subtype, providing explanatory information not affecting event handling</dd>
 			
 			<dt>$eventParams</dt>
@@ -40,39 +40,39 @@
 			<dd>The strings must not contain the <a href="CRConfig.html#eventDataSplitChar">$eventDataSplitChar</a> ("," by default)</dd>
 			
 			<dt>$buffered</dt>
-			<dd>boolean, default = false</dd>
+			<dd class="dataType">Boolean, default = false</dd>
 			<dd>If true, the event will be saved if the client is offline and sent (if possible) when it becomes online</dd>
 			
 			<dt>$logged</dt>
-			<dd>Boolean, default = false</dd>
+			<dd class="dataType">Boolean, default = false</dd>
 			<dd>If true the event will always be logged by the eventSender, even if not sent</dd>
 			
 			<dt id="interceptable">$interceptable</dt>
-			<dd>Boolean, default = true</dd>
+			<dd class="dataType">Boolean, default = true</dd>
 			<dd>If true, the event can be rejected or modified by functions at eventSender and eventReceiver</dd>
 			
 			<dt>$sendCt</dt>
-			<dd>Number, default = NaN</dd>
+			<dd class="dataType">Number, default = NaN</dd>
 			<dd>Calendar time in millisecs indicating when the event was sent by the sender client</dd>
 			
 			<dt>$receiveCt</dt>
-			<dd>Number, default = NaN</dd>
+			<dd class="dataType">Number, default = NaN</dd>
 			<dd>Calendar time in millisecs indicating when the event was received by the recipient client</dd>
 			
 			<dt>$senderClientId</dt>
-			<dd>String, default = ""</dd>
+			<dd class="dataType">String, default = ""</dd>
 			<dd>Id of the sender client</dd>
 			
 			<dt>$senderClientRole</dt>
-			<dd>String, default = ""</dd>
+			<dd class="dataType">String, default = ""</dd>
 			<dd>Role of the sender client, not transmitted to the recipient client</dd>
 			
 			<dt>$senderAccessToken</dt>
-			<dd>String, default = ""</dd>
+			<dd class="dataType">String, default = ""</dd>
 			<dd>Access token sender client, not transmitted to the recipient client</dd>
 			
 			<dt>$recipientClientId</dt>
-			<dd>String, default = ""</dd>
+			<dd class="dataType">String, default = ""</dd>
 			<dd>Id of the client app to which the event is sent</dd>
 		</dl>
 		
@@ -87,11 +87,11 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$eventType</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Event type</dd>
 						
 						<dt>$eventSubType</dt>
-						<dd>String, default = ""</dd>
+						<dd class="dataType">String, default = ""</dd>
 						<dd>Optional subtype, providing information that does not affect event handling</dd>
 						
 						<dt>eventParams</dt>
@@ -108,15 +108,15 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$senderClientId</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Identifies a client app</dd>
 						
 						<dt>$senderClientRole</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Role of the sender client, not transmitted to the recipient client</dd>
 						
 						<dt>$senderAccessToken</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Access token of the sender client, not transmitted to the recipient client</dd>
 					</dl>
 				</details>

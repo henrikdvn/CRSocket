@@ -17,11 +17,11 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>config</dt>
-						<dd><a href="CRConfig.html">CRConfig</a>, required</dd>
+						<dd class="dataType"><a href="CRConfig.html">CRConfig</a> object, required</dd>
 						<dd>Configuration parameters and methods</dd>
 						
 						<dt>clientRole</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The role of the client ("controller" or "responder")</dd>
 					</dl>
 				</details>
@@ -31,58 +31,55 @@
 		<h2>Properties</h2>
 		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> properties</p>
 		<dl>
-			<dt>clientActive</dt>
-			<dd>Boolean, writeOnly</dd>
+			<dt id="clientActive">clientActive</dt>
+			<dd class="dataType">Boolean, writeOnly</dd>
 			<dd>Indicates whether the client is active or not</dd>
 			
-			<dt>clientId</dt>
-			<dd>String, writeOnly</dd>
+			<dt id="clientId">clientId</dt>
+			<dd class="dataType">String, writeOnly</dd>
 			<dd>The current clientId</dd>
 			
-			<dt>accessToken</dt>
-			<dd>String, writeOnly</dd>
+			<dt id="accessToken">accessToken</dt>
+			<dd class="dataType">String, writeOnly</dd>
 			<dd>The current accessToken</dd>
 		</dl>
 		
 		<h2>Methods</h2>
 		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> methods</p>
 		<dl>
-			<dt>Init()</dt>
+			<dt id="Init">Init()</dt>
 			<dd>Initiates dynamic variables and activates the object</dd>
 		</dl>
 		
 		<h2>Events</h2>
 		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> events</p>
 		<dl>
-			<dt>crEventReceived</dt>
-			<dd><a href="CREvent.html">CREvent</a></dd>
-			<dd>Delivered when a crEvent has been received</dd>
+			<dt id="crEventReceived">crEventReceived</dt>
+			<dd>Delivers a <a href="CREvent.html">CREvent</a> object</dd>
 		</dl>
 		
 		<h2>States</h2>
 		<dl>
-			<dt>closed</dt>
-			<dd>The eventSource is closed, either:
-				<ul>
-					<li>because the client is not active,</li>
-					<li>because it has not been assigned the required properties, or</li>
-					<li>because the connection has been shut down.</li>
-				</ul>
-			</dd>
-			
-			<dt>opening</dt>
+			<dt id="closed">closed</dt>
 			<dd>
-				The eventSource is opening
+				The eventSource is closed, because the client is not active,
+				or because it has not been assigned the required properties,
+				or because the connection has been shut down.
 			</dd>
 			
-			<dt>open</dt>
-			<dd>The eventSource is open and able to receive events</dd>
+			<dt id="opening">opening</dt>
+			<dd>
+				The eventSource is opening.
+			</dd>
 			
-			<dt>closing</dt>
-			<dd>The eventSource is closing</dd>
+			<dt id="open">open</dt>
+			<dd>The eventSource is open and able to receive events.</dd>
 			
-			<dt>aborted</dt>
-			<dd>The eventSource has been aborted for some reason, possibly indicated by the subState</dd>
+			<dt id="closing">closing</dt>
+			<dd>The eventSource is closing.</dd>
+			
+			<dt id="aborted">aborted</dt>
+			<dd>The eventSource has been aborted for some reason, possibly indicated by the subState.</dd>
 		</dl>
 	</body>
 </html>

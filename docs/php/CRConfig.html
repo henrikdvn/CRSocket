@@ -20,23 +20,23 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$resourceName</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Name of the current resource, eg. "clientid", "eventsource", "sendevent"</dd>
 						
 						<dt>$appLogRoot</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Path to the directory used for logging</dd>
 						
 						<dt>$appDataRoot</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Path to the directory used for data files</dd>
 						
 						<dt>$crsSockRoot</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Path to the directory used for socket files</dd>
 						
 						<dt>$crsDataRoot</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Path to the directory used for data files related to the current IP domain</dd>
 					</dl>
 				</details>
@@ -46,52 +46,52 @@
 		<h2>Properties</h2>
 		<dl>
 			<dt id="resourceName">$resourceName</dt>
-			<dd>String</dd>
+			<dd class="dataType">String</dd>
 			<dd>Name of the current resource, eg. "clientid", "eventsource", "sendevent"</dd>
 			<dd>initiated by the constructor</dd>
 			
 			<dt id="appLogRoot">$appLogRoot</dt>
-			<dd>String</dd>
+			<dd class="dataType">String</dd>
 			<dd>Path to the directory used for logging</dd>
 			<dd>initiated by the constructor</dd>
 			
 			<dt id="appDataRoot">$appDataRoot</dt>
-			<dd>String</dd>
+			<dd class="dataType">String</dd>
 			<dd>Path to the directory used for data files</dd>
 			<dd>initiated by the constructor</dd>
 			
 			<dt id="crsSockRoot">$crsSockRoot</dt>
-			<dd>String</dd>
+			<dd class="dataType">String</dd>
 			<dd>Path to the directory used for socket files</dd>
 			<dd>initiated by the constructor</dd>
 			
 			<dt id="crsDataRoot">$crsDataRoot</dt>
-			<dd>String</dd>
+			<dd class="dataType">String</dd>
 			<dd>Path to the directory used for data files related to the current IP domain</dd>
 			<dd>initiated by the constructor</dd>
 			
 			<dt id="socketAcceptDtSecs">$socketAcceptDtSecs</dt>
-			<dd>Integer, readonly, default = 10</dd>
+			<dd class="dataType">Integer, readonly, default = 10</dd>
 			<dd>Max amount of secs before socket conditions are checked by a <a href="CREvent.htmlSource">CREventSource</a></dd>
 			
 			<dt id="maxPrevAliveDtSecs">$maxPrevAliveDtSecs</dt>
-			<dd>Integer, default = 25</dd>
+			<dd class="dataType">Integer, default = 25</dd>
 			<dd>Max amount of secs allowed between <span class="name">alive</span> events in a <a href="CREvent.htmlSource">CREventSource</a> before the requesting client is considered inactive</dd>
 			
 			<dt id="sendEventRetryDtSecs">$sendEventRetryDtSecs</dt>
-			<dd>Integer, default = 1</dd>
+			<dd class="dataType">Integer, default = 1</dd>
 			<dd>Delay between attempts to establish connection to a socket by a <a href="CREvent.htmlSender">CREventSender</a></dd>
 			
 			<dt id="sendEventMaxAttempts">$sendEventMaxAttempts</dt>
-			<dd>Integer, default = 4</dd>
+			<dd class="dataType">Integer, default = 4</dd>
 			<dd>Max no of attempts to establish connection to a socket by a CREventSender</dd>
 			
 			<dt id="maxEventDataStrLength">$maxEventDataStrLength</dt>
-			<dd>Integer, default = 8192</dd>
+			<dd class="dataType">Integer, default = 8192</dd>
 			<dd>Max length of data strings that can be transmitted between a <a href="CREvent.htmlSender">CREventSender</a> and a <a href="CREvent.htmlSource">CREventSource</a></dd>
 			
 			<dt id="eventDataSplitChar">$eventDataSplitChar</dt>
-			<dd>String, default = ","</dd>
+			<dd class="dataType">String, default = ","</dd>
 			<dd>Character used to split data elements in server-sent event data strings</dd>
 		</dl>
 		
@@ -103,11 +103,11 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt id="name">clientRole</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The role of the sender client ("controller" or "responder")</dd>
 						
 						<dt id="name">accessToken</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>A string containing the accessToken used to identify the requesting user and determine access rights</dd>
 					</dl>
 				</details>
@@ -154,7 +154,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$clientId</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>A client id</dd>
 					</dl>
 				</details>
@@ -166,7 +166,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$clientRole</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>A client role</dd>
 					</dl>
 				</details>
@@ -179,7 +179,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$accessToken</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>An access token</dd>
 					</dl>
 				</details>
@@ -191,7 +191,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>$msg</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The message string to be logged</dd>
 					</dl>
 				</details>

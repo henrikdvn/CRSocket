@@ -8,8 +8,8 @@
 	<body>
 		<h1>CREventSender</h1>
 		<p>This class extends <a href="CRClient.html">CRClient</a></p>
-		<p>It is used to transmit a messageEvent from the requesting client to a recipient client</p>
-		<p>Sender and event info is converted to a string which is written to socket named by the recipient clientId</p>
+		<p>It implements the <a href="../resources/sendevent.html">sendevent</a> resource.</p>
+		<p>Event info is converted to strings and written to a socket named [clientId].sock</p>
 		
 		<h2>Contstructor</h2>
 		<p>See <a href="CRClient.html">CRClient</a></p>
@@ -22,15 +22,15 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt id="name">$recipientClientId</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Identifies the recipient client</dd>
 						
 						<dt>$msgEventType</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The messageEvent type</dd>
 						
 						<dt>$msgEventData</dt>
-						<dd>String, default = ""</dd>
+						<dd class="dataType">String, default = ""</dd>
 						<dd>The messageEvent data</dd>
 					</dl>
 				</details>

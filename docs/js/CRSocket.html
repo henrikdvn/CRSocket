@@ -18,11 +18,11 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>config</dt>
-						<dd><a href="CRConfig.html">CRConfig</a>, required</dd>
+						<dd class="dataType"><a href="CRConfig.html">CRConfig</a> object, required</dd>
 						<dd>Configuration parameters and methods</dd>
 						
 						<dt>clientRole</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The role of the client ("controller" or "responder")</dd>
 					</dl>
 				</details>
@@ -32,149 +32,156 @@
 		<h2>Properties</h2>
 		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> properties</p>
 		<dl>
-			<dt>clientId</dt>
-			<dd>String, readOnly</dd>
-			<dd>Uniquely identifies the current combination of (appId, clientRole, browserEngine) within the current IP domain.</dd>
-			<dd>This property is automatically generated and maintained by the object.</dd>
+			<dt id="clientId">clientId</dt>
+			<dd class="dataType">String, readOnly</dd>
+			<dd>
+				The current <a href="../general/Terminology.html#clientId">clientId</a>,
+				used to identify the current client process.
+				Automatically generated and maintained.
+			</dd>
 			
-			<dt>accessToken</dt>
-			<dd>String, read/write, default = ""</dd>
-			<dd>The current accessToken used to identify the current user and determine access rights</dd>
-			
-			<dt>partnerClientId</dt>
-			<dd>String, read/write, default = ""</dd>
-			<dd>The clientId of the current partner client</dd>
+			<dt id="accessToken">accessToken</dt>
+			<dd class="dataType">String, read/write, default = ""</dd>
+			<dd>
+				The current <a href="../general/Terminology.html#accessToken">accessToken</a>,
+				used to identify the current user and determine access rights.
+			</dd>
+
+			<dt id="partnerClientId">partnerClientId</dt>
+			<dd class="dataType">String, read/write, default = ""</dd>
+			<dd>The clientId of the current <a href="../general/Terminology.html#partnerClient">partnerClient</a></dd>
 			
 			<dt id="active">active</dt>
-			<dd>Boolean, readOnly</dd>
+			<dd class="dataType">Boolean, readOnly</dd>
 			<dd>
-				True when the client is active (visible, online, not paused, and not unloading) and has been assigned a clientId. Corresponds to the active meta state.
+				True when the client is active (visible, online, not paused, and not unloading) and has been assigned a clientId.
+				Corresponds to the <a href="../general/Protocol.html#active">active</a> meta state.
 			</dd>
 			
 			<dt id="connected">connected</dt>
-			<dd>Boolean, readOnly</dd>
+			<dd class="dataType">Boolean, readOnly</dd>
 			<dd>
-				True if the socket is active and connected to an eventSource. Corresponds to the connected meta state.
+				True if the socket is active and connected to an eventSource.
+				Corresponds to the <a href="../general/Protocol.html#connected">connected</a> meta state.
 			</dd>
 			
 			<dt id="paired">paired</dt>
-			<dd>Boolean, readOnly</dd>
+			<dd class="dataType">Boolean, readOnly</dd>
 			<dd>
-				True if the socket is connected, has been assigned a partnerClientId and has not been rejected by this partner. Corresponds to the connected meta state.
+				True if the socket is connected, has been assigned a partnerClientId and has not been rejected by this partner.
+				Corresponds to the <a href="../general/Protocol.html#paired">paired</a> meta state.
 			</dd>
 			
 			<dt id="readyToSend">readyToSend</dt>
-			<dd>Boolean, readOnly</dd>
+			<dd class="dataType">Boolean, readOnly</dd>
 			<dd>
 				True if the socket is able to send events to a partner client, even though it may not be able to receive events.
+				(If the browser engine is offline, event requests will be buffered.)
 			</dd>
 		</dl>
 		
 		<h2>Methods</h2>
 		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> methods</p>
 		<dl>
-			<dt>init()</dt>
+			<dt id="init">init()</dt>
 			<dd>Initiates dynamic variables and activates the object</dd>
-			<dt>sendEvent(eventType, eventSubType = "", eventParams = [], buffered = false, logged = false, interceptable = true)</dt>
-			<dd>Generates and sends a CREvent object if the socket is <a href="#readyToSend">readyToSend</a>
-				<dd>See <a href="CREvent.htmlSender">CREventSender.genCrEvent</a> for details.</dd>
-				
-				<dt>localStorageSet(key, value)</dt>
-				<dd>Saves a value in localSorage, with key prepended by the current appId and clientRole (appId_clientRole_key).
-					<details>
-						<summary>Parameters</summary>
-						<dl>
-							<dt>key</dt>
-							<dd>String, required</dd>
-							
-							<dt>value</dt>
-							<dd>String, required</dd>
-						</dl>
-					</details>
-				</dd>
-				
-				<dt>localStorageGet(key) → String</dt>
-				<dd>Retrieves a value in localSorage, with key prepended by the current appId and clientRole (appId_clientRole_key).
-					<details>
-						<summary>Parameters</summary>
-						<dl>
-							<dt>key</dt>
-							<dd>String, required</dd>
-						</dl>
-					</details>
-				</dd>
-				
-				<dt>localStorageRemove(key)</dt>
-				<dd>Removes a value from localSorage, with key prepended by the current appId and clientRole (appId_clientRole_key).
+			
+			<dt id="sendEvent">sendEvent(eventType, eventSubType = "", eventParams = [], buffered = false, logged = false, interceptable = true)</dt>
+			<dd>Generates and sends a CREvent object if the socket is <a href="#readyToSend">readyToSend</a></dd>
+			<dd>See <a href="CREventSender.html#genCrEvent">CREventSender.genCrEvent</a> for details.</dd>
+			
+			<dt id="localStorageSet">localStorageSet(key, value)</dt>
+			<dd>Saves a value in localSorage, with key prepended by the current appId and clientRole (appId_clientRole_key).
+				<details>
 					<summary>Parameters</summary>
 					<dl>
 						<dt>key</dt>
-						<dd>String, required</dd>
-					</dl>
-					</details>
-				</dd>
-		</dl>
-		
-		<h2>Events</h2>
-		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> events</p>
-		<dl>
-			<dt>clientIdChanged</dt>
-			<dd>delivers a MessageEvent object when the socket clientId has changed
-				<details>
-					<summary>Message detail properties</summary>
-					<dl>
-						<dt>subState</dt>
-						<dd>String</dd>
-						<dd>The new clientId</dd>
+						<dd class="dataType">String, required</dd>
+						
+						<dt>value</dt>
+						<dd class="dataType">String, required</dd>
 					</dl>
 				</details>
 			</dd>
-			<dt>accessTokenChanged</dt>
-			<dd>
-				Delivers a MessageEvent object containing the new value when the socket accessToken has changed.
+			
+			<dt id="localStorageGet">localStorageGet(key) → String</dt>
+			<dd>Retrieves a value from localSorage, with key prepended by the current appId and clientRole (appId_clientRole_key).
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>key</dt>
+						<dd class="dataType">String, required</dd>
+					</dl>
+				</details>
 			</dd>
-			<dt>partnerClientIdChanged</dt>
-			<dd>
-				Delivers a MessageEvent object containing the new value when the socket partnerClientId has changed.
+			
+			<dt id="localStorageRemove">localStorageRemove(key)</dt>
+			<dd>Removes a value from localSorage, with key prepended by the current appId and clientRole (appId_clientRole_key).
+				<details>
+					<summary>Parameters</summary>
+					<dl>
+						<dt>key</dt>
+						<dd class="dataType">String, required</dd>
+					</dl>
+				</details>
 			</dd>
-			<dt id="eventReceived">eventReceived</dt>
-			<dd>Delivers a <a href="CREvent.html">CREvent</a> object received by the socket</dd>
 		</dl>
 		
-		<h2>States</h2>
+		<h2>Events</h2>
+		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> events.</p>
 		<dl>
-			<dt>passive</dt>
+			<dt id="clientIdChanged">clientIdChanged</dt>
+			<dd>Delivers a MessageEvent object containing the new clientId.</dd>
+			
+			<dt id="accessTokenChanged">accessTokenChanged</dt>
+			<dd>
+				Delivers a MessageEvent object containing the new accessToken.
+			</dd>
+			
+			<dt id="partnerClientIdChanged">partnerClientIdChanged</dt>
+			<dd>
+				Delivers a MessageEvent object containing the new partnerClientId.
+			</dd>
+			
+			<dt id="eventReceived">eventReceived</dt>
+			<dd>Delivers a <a href="CREvent.html">CREvent</a> object received by the socket.</dd>
+		</dl>
+		
+		<h2 id="states">States</h2>
+		<p>See also the <a href="../general/Protocol.html#states">States</a> section in the Protocol page.</p>
+		<dl>
+			<dt id="passive">passive</dt>
 			<dd>
 				The client is not <a href="#active">active</a>
 			</dd>
-			<dt>readyToConnect</dt>
+			
+			<dt id="readyToConnect">readyToConnect</dt>
 			<dd>
-				The client is <a href="#active">active</a>, but the socket has not connected to an eventSource, either
-				because it has not been assigned an accessToken or
-				because a previous connection attempt has been aborted by the server.
+				The client is <a href="#active">active</a>, but the socket has not connected to an eventSource,
+				either because it has not been assigned an accessToken,
+				or because a previous connection attempt has been aborted by the server.
 			</dd>
-			<dt>connecting</dt>
+			
+			<dt id="connecting">connecting</dt>
 			<dd>
-				The socket is <a href="#active">active</a>, has been assigned an accessToken
-				and is trying to connect to a eventSource.
+				The socket is <a href="#active">active</a>, has been assigned an accessToken and is trying to connect to an eventSource.
 			</dd>
-			<dt>readyToPair</dt>
+			
+			<dt id="readyToPair">readyToPair</dt>
 			<dd>
-				The socket is <a href="#connected">connected</a>,
-				but cannot reach out to a partner client, either
-				because it has not been assigned a partnerClientId or
-				because a previous pairing attempt has been rejected by the partner.
+				The socket is <a href="#connected">connected</a>, but cannot reach out to a partner client,
+				either because it has not been assigned a partnerClientId,
+				or because a previous pairing attempt has been rejected by the partner.
 			</dd>
-			<dt>searching</dt>
+			
+			<dt id="searching">searching</dt>
 			<dd>
-				The socket is <a href="#paired">paired</a>,	but has
-				not received any events from the partner within the last config.partnerActiveMaxEventInDt millisecs.
+				The socket is <a href="#paired">paired</a>,	but has <b>not</b> received any events from the partner within the last <a href="CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs.
 			</dd>
-			<dt>interacting</dt>
+			
+			<dt id="interacting">interacting</dt>
 			<dd>
-				The socket is <a href="#paired">paired</a> and
-				has received at least one event from the partner within the last
-				<a href="CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs.
+				The socket is <a href="#paired">paired</a> and has received at least one event from the partner within the last <a href="CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs.
 			</dd>
 		</dl>
 	</body>

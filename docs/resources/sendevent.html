@@ -37,17 +37,20 @@
 		<h2>Response</h2>
 		<p>None</p>
 		
+		<h2 id="protocol">Event handling protocol</h2>
+		
 		<h3>Outgoing events to to the requesting client</h3>
 		<dl>
 			<dt>crEvent.reject</dt>
 			<dd>
-				A messageEvent containing a crEvent with <a href="../php/CREvent.html#eventType">eventType</a> <span class="name">reject</span>
+				A messageEvent containing a crEvent with <a href="../php/CREvent.html#eventType">eventType</a> <span class="name">reject</span>.
 			</dd>
 			<dd>
-				This event will be transmitted to the requesting client via its eventsource instance if a crEvent with <a href="../php/CREvent.html#eventType">eventType</a> <span class="name">ping</span> event was not forwarded
+				This event will be transmitted to the requesting client via its eventsource instance if a crEvent with
+				<a href="../php/CREvent.html#eventType">eventType</a> <span class="name">ping</span> event was not forwarded.
 			</dd>
 			<dd>
-				The <a href="../php/CREvent.html#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected
+				The <a href="../php/CREvent.html#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected.
 			</dd>
 		</dl>
 	</body>

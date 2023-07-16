@@ -8,6 +8,8 @@ dl {margin: 1em 0 1em 1em}
 dt {margin: 1em 0 0 1ex; color: #008; font-weight: bold}
 dd {margin: 1ex 1ex 0 1ex}
 
+dd.dataType {font-weight: bold}
+
 details {margin: 1ex 0 0 0}
 
 span.property {font-weight: bold; color: #008}

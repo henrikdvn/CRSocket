@@ -50,11 +50,7 @@ class CRConfig {
 	// Delay before attempting to retrieve a new clientId if the current one is invalid.
 	
 	invalidClientIdRetryDt = 5 * 1000;
-	
-	// Delay before reopening the eventSource after being aborted (while open).
-	
-	eventSourceAbortedReopenDt = 5 * 1000;
-	
+		
 	// Delay between alive-events sent to the eventSource.
 	
 	eventSourceSendAliveDt = 12 * 1000;

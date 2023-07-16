@@ -7,35 +7,37 @@
 	</head>
 	<body>
 		<h1>Protocol</h1>
-		<h2>States</h2>
-		<p>When a crSocket has been activated, it will always be in one of the following states:</p>
+		<h2 id="states">States</h2>
+		<p>When a CRSocket object has been activated, it will always be in one of the following states:</p>
 		<dl>
-			<dt>passive</dt>
+			<dt id="passive">passive</dt>
 			<dd>
 				Entered when the enclosing client is inactive (invisible, offline, paused, or unloading) or the crSocket has not been assigned a clientId.
 			</dd>
 			
-			<dt>readyToConnect</dt>
+			<dt id="readyToConnect">readyToConnect</dt>
 			<dd>
 				Entered when the crSocket is active, but has not connected to an eventSource, either because it has not been assigned an accessToken or because a previous connection attempt has been aborted by the server.
 			</dd>
 			
-			<dt>connecting</dt>
-			<dd>Entered when the crSocket is active, has been assigned an accessToken and the internal eventReceiver is trying to connect to an eventSource.</dd>
+			<dt id="connecting">connecting</dt>
+			<dd>
+				Entered when the crSocket is active, has been assigned an accessToken and the internal eventReceiver is trying to connect to an eventSource.
+			</dd>
 			
-			<dt>readyToPair</dt>
+			<dt id="readyToPair">readyToPair</dt>
 			<dd>
 				Entered when the crSocket is active, the internal eventReceiver has connected to an eventSource, but does not have a partnerClient, either because it has not been assigned a partnerClientId or because a previous pairing attempt has been rejected.
 			</dd>
 			
-			<dt>searching</dt>
+			<dt id="searching">searching</dt>
 			<dd>
-				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, but has not received any events from the partnerClient within <a href="../js/CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs or has received an <a href="#inactive">inactive</a> event from the partnerClient.
+				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient, but has not received any events from the partnerClient within <a href="../js/CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs or has received an <a href="#inactive">inactive</a> event from the partnerClient.
 			</dd>
 			
-			<dt>interacting</dt>
+			<dt id="interacting">interacting</dt>
 			<dd>
-				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient and is able to send events, has received at least one event from the partnerClient within <a href="../js/CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs and has not received an <a href="#inactive">inactive</a> event from the partnerClient.
+				Entered when the crSocket is active, has connected to an eventSource, has a partnerClient, has received at least one event from the partnerClient within <a href="../js/CRConfig.html#partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</a> millisecs, and has not received an <a href="#inactive">inactive</a> event from the partnerClient.
 			</dd>
 		</dl>
 		
@@ -55,8 +57,7 @@
 			
 			<dt id="paired">paired</dt>
 			<dd>
-				The set of states implying that the crSocket is active, connected,
-				has been assigned to a partnerClient and has not been rejected by this partner.
+				The set of states implying that the crSocket is active, connected, has been assigned a partnerClient and has not been rejected by this partner.
 			</dd>
 			<dd>Includes <span class="name">searching</span> and <span class="name">interacting</span></dd>
 		</dl>
@@ -68,7 +69,7 @@
 		
 		<h2>Communication management</h2>
 		<p>
-			Pairing and communication monitoring is managed by means of the following crEvents.
+			Pairing and communication monitoring is managed by means of the following crEvents:
 		</p>
 		<dl>
 			<dt id="ping">ping</dt>
@@ -89,7 +90,7 @@
 			
 			<dt id="unassign">unassign</dt>
 			<dd>
-				If the partnerClientId of a crSocket is unassigned, it must send an unassign event to the previously assigned partnerClient. If this client had the originating client assigned as partner, it will unassign it.
+				If the partnerClientId of a controller crSocket is unassigned, it must send an unassign event to the previously assigned partnerClient. If this client had the originating client assigned as partner, it will unassign it.
 			</dd>
 			
 			<dt id="inactive">inactive</dt>

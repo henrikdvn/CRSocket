@@ -19,7 +19,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>appId</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>Identifies a controller/responder pair within an IP domain</dd>
 					</dl>
 				</details>
@@ -29,67 +29,66 @@
 		<h2>Properties</h2>
 		<dl>
 			<dt id="appId">appId</dt>
-			<dd>String, readOnly</dd>
+			<dd class="dataType">String, readOnly</dd>
 			<dd>Identifies the current controller/responder pair served by the current IP domain</dd>
 			<dd>initiated by the constructor</dd>
 			
 			<dt id="stateUpdateCompleteDt">stateUpdateCompleteDt</dt>
-			<dd>Number, readOnly, default = 500</dd>
+			<dd class="dataType">Number, readOnly, default = 500</dd>
 			<dd>Delay in millisecs to allow state updates to complete</dd>
 			
 			<dt id="serverInteractionCompleteDt">serverInteractionCompleteDt</dt>
-			<dd>Number, readOnly, default = 1000</dd>
+			<dd class="dataType">Number, readOnly, default = 1000</dd>
 			<dd>Delay in millisecs to allow state updates involving server interaction to complete</dd>
 			
 			<dt id="minCrEventDt">minCrEventDt</dt>
-			<dd>Number, readOnly, default = 1000</dd>
+			<dd class="dataType">Number, readOnly, default = 1000</dd>
 			<dd>Minimum delay between ordinary crEvents</dd>
 			
 			<dt id="interactingMaxEventOutDt">interactingMaxEventOutDt</dt>
-			<dd>Number, readOnly, default = 10 * 1000</dd>
-			<dd>Max time in millisecs between ping events (or other events) sent to the partnerClient in the interacting state</dd>
+			<dd class="dataType">Number, readOnly, default = 10 * 1000</dd>
+			<dd>
+				Max time in millisecs between ping events (or other events) sent to the
+				<a href="../general/Terminology.html#partnerClient">partnerClient</a> in the interacting state
+			</dd>
 			
 			<dt id="searchingMaxEventOutDt">searchingMaxEventOutDt</dt>
-			<dd>Number, readOnly, default = 5 * 1000</dd>
+			<dd class="dataType">Number, readOnly, default = 5 * 1000</dd>
 			<dd>Max time in millisecs between events sent to the partnerClient in the searching state</dd>
 			<dd>Gaps will be filled with <span class="name">ping</span> events</dd>
 			
 			<dt id="partnerActiveMaxEventInDt">partnerActiveMaxEventInDt</dt>
-			<dd>Number, readOnly, default = 20 * 1000</dd>
-			<dd>Max time in millisecs allowed between events received from a partnerClient before it is not considered active</dd>
+			<dd class="dataType">Number, readOnly, default = 20 * 1000</dd>
+			<dd>Max time in millisecs allowed between events received from a <a href="../general/Terminology.html#partnerClient">partnerClient</a> before it is considered inactive</dd>
 			
 			<dt id="invalidClientIdRetryDt">invalidClientIdRetryDt</dt>
-			<dd>Number, readOnly, default = 5 * 1000</dd>
+			<dd class="dataType">Number, readOnly, default = 5 * 1000</dd>
 			<dd>
 				Time in millisecs before attempting to retrieve a new <a href="CRSocket.html#clientId">clientId</a> if the current one is invalid
 			</dd>
 			
-			<dt id="eventSourceAbortedReopenDt">eventSourceAbortedReopenDt</dt>
-			<dd>Number, readOnly, default = 5 * 1000</dd>
-			<dd>Time in millisecs before reopening the eventSource after being aborted (while open)</dd>
-			
 			<dt id="eventSourceSendAliveDt">eventSourceSendAliveDt</dt>
-			<dd>Number, readOnly, default = 20 * 1000</dd>
-			<dd>Time in millisecs between alive events sent to the eventsource service</dd>
+			<dd class="dataType">Number, readOnly, default = 20 * 1000</dd>
+			<dd>Time in millisecs between alive events sent to the <a href="../resources/eventsource.html">eventsource</a> eventsource resource</dd>
 			
 			<dt id="validClientIdRegExp">validClientIdRegExp</dt>
-			<dd>RegExp, readOnly, default = /^[0-9]{6}$/</dd>
+			<dd class="dataType">RegExp, readOnly, default = /^[0-9]{6}$/</dd>
 			<dd>Defines syntactically valid <a href="CRSocket.html#clientId">clientId</a> strings</dd>
 			
 			<dt id="validCrEventTypeRegExp">validCrEventTypeRegExp</dt>
-			<dd>RegExp, readOnly, default = /^[0-9A-Za-z]+$/</dd>
+			<dd class="dataType">RegExp, readOnly, default = /^[0-9A-Za-z]+$/</dd>
 			<dd>Defines syntactically valid <a href="CREvent.html#eventType">eventType</a> strings</dd>
 			
 			<dt id="validCrEventSubTypeRegExp">validCrEventSubTypeRegExp</dt>
-			<dd>RegExp, readOnly, default = /^[0-9A-Za-z]*$/</dd>
+			<dd class="dataType">RegExp, readOnly, default = /^[0-9A-Za-z]*$/</dd>
 			<dd>Defines syntactically valid <a href="CREvent.html#eventSubType">eventSubType</a> strings</dd>
 			
 			<dt id="validEventParamRegExp">validEventParamRegExp</dt>
-			<dd>RegExp, readOnly, default = /^[^,]*$/</dd>
+			<dd class="dataType">RegExp, readOnly, default = /^[^,]*$/</dd>
 			<dd>Defines syntactically valid eventParam strings</dd>
 			
 			<dt id="eventDataSplitChar">eventDataSplitChar</dt>
-			<dd>String, readOnly, default = ","</dd>
+			<dd class="dataType">String, readOnly, default = ","</dd>
 			<dd>Defines the string used to separate data parameters</dd>
 		</dl>
 		
@@ -102,7 +101,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>clientId</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>A client id</dd>
 					</dl>
 				</details>
@@ -114,7 +113,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>clientRole</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>A client role</dd>
 					</dl>
 				</details>
@@ -126,7 +125,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>accessToken</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>An accessToken</dd>
 					</dl>
 				</details>
@@ -138,7 +137,7 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>eventType</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>A CREvent eventType</dd>
 					</dl>
 				</details>
@@ -149,8 +148,8 @@
 				<details>
 					<summary>Parameters</summary>
 					<dl>
-						<dt>ckientId</dt>
-						<dd>String, required</dd>
+						<dt>subType</dt>
+						<dd class="dataType">String, required</dd>
 						<dd>A CREvent eventSubType</dd>
 					</dl>
 				</details>

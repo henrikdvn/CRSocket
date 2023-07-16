@@ -18,13 +18,13 @@
 		
 		<h2>Request parameters</h2>
 		<dl>
-			<dt id="name">clientid</dt>
+			<dt id="clientid">clientid</dt>
 			<dd>Identifies the recipient client</dd>
 			
-			<dt id="name">clientRole</dt>
+			<dt id="clientRole">clientRole</dt>
 			<dd>The role of the recipient client ("controller" or "responder")</dd>
 			
-			<dt id="name">accessToken</dt>
+			<dt id="accessToken">accessToken</dt>
 			<dd>An URLEncoded string containing the accessToken used to identify the current user and determine access rights</dd>
 		</dl>
 		
@@ -32,7 +32,7 @@
 		<h2>Response</h2>
 		<p>A text/event-stream stream</p>
 		
-		<h2>Event handling protocol</h2>
+		<h2 id="protocol">Event handling protocol</h2>
 		<p>Incoming events not listed below will be ignored</p>
 		<p>For incoming events, the appId, clientRole, clientId and accessToken of the sender must be available for internal use</p>
 		
@@ -48,16 +48,19 @@
 			
 			<dt id="close">close</dt>
 			<dd>
-				A messageEvent signalling that the event stream should close immediately. The eventsource should respond with a <span class="name">closed</p> event and then terminate. Closing this way is generally faster than just closing the eventStream using the JavaScript API.
+				A messageEvent signalling that the event stream should close immediately. The eventsource should respond with a
+				<span class="name">closed</span> event and then terminate. Closing this way is generally faster than just closing the eventStream using the JavaScript API.
 			</dd>
 		</dl>
 		
 		<h3>Incoming events from other eventsource instances</h3>
-		<p>Events from instances with a clientId or clientRole not matching the current instance will be ignored</p>
+		<p>Events from instances with a clientId or clientRole not matching the current instance will be ignored.</p>
 		<dl>
 			<dt id="release">release</dt>
 			<dd>
-				A messageEvent signalling that another eventsource instance will take over the stream. The eventsource should respond with a <span class="name">aborted</p> event with subType <span class="name">releasedByOther</span> and the pid of the process that sent the release event, and then terminate. This event is used to handle situations where a competing client with the same clientId has been activated or that regular termination of an eventsource instance has been delayed so that the replacement instance has started.
+				A messageEvent signalling that another eventsource instance will take over the stream. The eventsource should respond with a
+				<span class="name">aborted</span> event with subType
+				<span class="name">releasedByOther</span> and the pid of the process that sent the release event, and then terminate. This event is used to handle situations where a competing client with the same clientId has been activated or that regular termination of an eventsource instance has been delayed so that the replacement instance has started.
 			</dd>
 		</dl>
 		
@@ -76,7 +79,8 @@
 			<dt id="aborted">aborted</dt>
 			<dd>A messageEvent signalling that the event stream has been aborted</dd>
 			<dd>
-				Must contain the current pid, a (potentially empty) code indicating why the stream was aborted and the (potentially empty) pid of the eventsource instance that released the stream.
+				Must contain the current pid, and a (potentially empty) code indicating why the stream was aborted. If the abortion was caused by a
+				<span class="name">release</span> event, it must also contain the pid of the releasing eventsource.
 			</dd>
 			
 			<dt id="shutdown">shutdown</dt>
@@ -85,14 +89,16 @@
 			</dd>
 			
 			<dt id="crEvent">crEvent</dt>
-			<dd>A messageEvent containing a crEvent, forwarded from another crSocket</dd>
+			<dd>A messageEvent containing a crEvent, forwarded from another crSocket.</dd>
 		</dl>
 		
 		<h3>Incoming events from other clients</h3>
 		<dl>
 			<dt>crEvent</dt>
 			<dd>A messageEvent containing a crEvent, received from another client</dd>
-			<dd>Only events from clients with a matching appId and complimentary client role will be forwarded to the recipitent client</dd>
+			<dd>
+				Only events from clients with a matching appId and complimentary client role will be forwarded to the recipitent client.
+			</dd>
 		</dl>
 		<p>
 			If the <a href="../php/CREvent.html#interceptable">interceptable</a> propety is true
@@ -103,13 +109,17 @@
 		<dl>
 			<dt>crEvent.reject</dt>
 			<dd>
-				A messageEvent containing a crEvent with <a href="CREvent.html#eventType">eventType</a> <span class="name">reject</span>
+				A messageEvent containing a crEvent with
+				<a href="../php/CREvent.html#eventType">eventType</a>
+				<span class="name">reject</span>
 			</dd>
 			<dd>
-				This event will be returned to the sender if a crEvent with <a href="../php/CREvent.html#eventType">eventType</a> <span class="name">ping</span> event was not forwarded
+				This event will be returned to the sender if a crEvent with
+				<a href="../php/CREvent.html#eventType">eventType</a>
+				<span class="name">ping</span> event was not forwarded
 			</dd>
 			<dd>
-				The <a href="../php/CREvent.html#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected
+				The <a href="../php/CREvent.html#eventSubType">eventSubType</a> property may contain a code indicating why the event was rejected.
 			</dd>
 		</dl>
 	</body>

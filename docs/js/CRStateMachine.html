@@ -19,15 +19,15 @@
 		<h2>Properties</h2>
 		<dl>
 			<dt>state</dt>
-			<dd>String, readOnly</dd>
+			<dd class="dataType">String, readOnly</dd>
 			<dd>The current state</dd>
 			
 			<dt>subState</dt>
-			<dd>String, readOnly</dd>
+			<dd class="dataType">String, readOnly</dd>
 			<dd>The current subState</dd>
 			
 			<dt>prevState</dt>
-			<dd>String, readOnly</dd>
+			<dd class="dataType">String, readOnly</dd>
 			<dd>The previous state</dd>
 		</dl>
 		
@@ -39,11 +39,11 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>type</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The event type</dd>
 						
 						<dt>listener</dt>
-						<dd>Function(event), required</dd>
+						<dd class="dataType">Function(event), required</dd>
 						<dd>A function which is called when the event is delivered</dd>
 					</dl>
 				</details>
@@ -55,44 +55,24 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>type</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The event type</dd>
 						
 						<dt>listener</dt>
-						<dd>Function(event), required</dd>
+						<dd class="dataType">Function(event), required</dd>
 						<dd>The event listener function</dd>
 					</dl>
 				</details>
 			</dd>
 		</dl>
 		
-		<h2>Events</h2>
+		<h2 id="Events">Events</h2>
 		<dl>
 			<dt>stateChanged</dt>
-			<dd>MessageEvent
-				<dd>delivered when the state has changed.
-					<details>
-						<summary>detail properties</summary>
-						<dl>
-							<dt>state</dt>
-							<dd>String
-								<dd>The name of the new state</dd>
-						</dl>
-					</details>
-				</dd>
-				
-				<dt>subStateChanged</dt>
-				<dd>MessageEvent
-					<dd>delivered when the subState has changed.
-						<details>
-							<summary>detail properties</summary>
-							<dl>
-								<dt>subState</dt>
-								<dd>String</dd>
-								<dd>The name of the new subState</dd>
-							</dl>
-						</details>
-					</dd>
-				</dl>
+			<dd>Delivers the name of the new state.</dd>
+			
+			<dt>subStateChanged</dt>
+			<dd>Delivers the name of the new subState.</dd>
+		</dl>
 	</body>
 </html>

@@ -22,7 +22,7 @@
 						<dd>Configuration parameters and methods</dd>
 						
 						<dt>clientRole</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The role of the client ("controller" or "responder")</dd>
 					</dl>
 				</details>
@@ -33,19 +33,19 @@
 		<p>See also <a href="CRStateMachine.html">CRStateMachine</a> properties</p>
 		<dl>
 			<dt>clientActive</dt>
-			<dd>Boolean, writeOnly</dd>
+			<dd class="dataType">Boolean, writeOnly</dd>
 			<dd>Indicates whether the client is active or not</dd>
 			
 			<dt>clientId</dt>
-			<dd>String, writeOnly</dd>
+			<dd class="dataType">String, writeOnly</dd>
 			<dd>The current clientId</dd>
 			
 			<dt>accessToken</dt>
-			<dd>String, writeOnly</dd>
+			<dd class="dataType">String, writeOnly</dd>
 			<dd>The current accessToken</dd>
 			
 			<dt>partnerClientId</dt>
-			<dd>String, writeOnly</dd>
+			<dd class="dataType">String, writeOnly</dd>
 			<dd>Identifies the client to which this sender will send events</dd>
 		</dl>
 		
@@ -61,11 +61,11 @@
 					<summary>Parameters</summary>
 					<dl>
 						<dt>eventType</dt>
-						<dd>String, required</dd>
+						<dd class="dataType">String, required</dd>
 						<dd>The event type</dd>
 						
 						<dt>eventSubType</dt>
-						<dd>String, default = ""</dd>
+						<dd class="dataType">String, default = ""</dd>
 						<dd>Optional subtype, providing explanatory information not affecting event handling</dd>
 						
 						<dt>eventParams</dt>
@@ -75,15 +75,15 @@
 						</dd>
 						
 						<dt>buffered</dt>
-						<dd>boolean, default = false</dd>
+						<dd class="dataType">Boolean, default = false</dd>
 						<dd>If true, the event will be saved if the client is offline and sent (if possible) when it becomes online.</dd>
 						
 						<dt>logged</dt>
-						<dd>Boolean, default = false</dd>
+						<dd class="dataType">Boolean, default = false</dd>
 						<dd>If true the event will always be logged by the eventSender, even if not forwarded</dd>
 						
 						<dt>interceptable</dt>
-						<dd>Boolean, default = true</dd>
+						<dd class="dataType">Boolean, default = true</dd>
 						<dd>If true, the event can be intercepted/modified by server-side interceptor functions</dd>
 					</dl>
 				</details>

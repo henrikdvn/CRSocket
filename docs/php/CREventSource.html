@@ -8,17 +8,20 @@
 	<body>
 		<h1>CREventSource</h1>
 		<p>This class extends <a href="CRClient.html">CRClient</a></p>
-		<p>It generates a text/event-stream consisting of server-sent events sent to the requesting client</p>
-		<p>Sender and event info is retrieved from strings read from a socket named [clientId].sock</p>
-		<p>See <a href="CRClient.html">
+		<p>It implements the <a href="../resources/eventsource.html">eventsource</a> resource.</p>
+		<p>Event info is retrieved from strings read from a socket named [clientId].sock</p>
+		
+		<h2>Contstructor</h2>
+		<p>See <a href="CRClient.html">CRClient</a></p>
+		
 			<h2>Methods</h2>
 			<dl>
 				<dt>open()</dt>
 				<dd>
-					Opens an event stream that conforms to the <a href="../resources/eventsource.html">eventsource</a> specification.
+					Opens an event stream that conforms to the <a href="../resources/eventsource.html#protocol">eventsource protocol</a>.
 				</dd>
 				<dd>
-					Echoes an <span class="name">aborted</name> event and terminates if credentials are invalid.
+					Echoes an <span class="name">aborted</span> event and terminates if credentials are invalid.
 				</dd>
 			</dl>
 	</body>
