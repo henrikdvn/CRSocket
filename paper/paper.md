@@ -22,6 +22,7 @@ bibliography: paper.bib
 # Summary
 
 The Controller-Responder Socket (CRSocket) is a web app component that can be used to develop digital tasks where testers use a controller device to administer trials and a separate responder device to present stimuli and collect responses. In addition to providing a more streamlined and comfortable test situation, this approach may improve measurement quality because potentially distracting activities related to configuration and initiation of tasks are hidden from the participant. It also facilitates more flexible data collection protocols where testers can make real-time adjustments based on direct observations of the test situation and feedback from various sources presented on the controller device. In addition to communication functionality, the CRSocket also provides client-side buffering of events and server-side plug-in interfaces related to access control and data storage. Please note that usage of this software requires programming skills and experience with the PHP and JavaScript programming languages.
+
 # Statement of need
 
 The CRSocket component was originally developed for the Early Childhood Inhibitory Touch Task (ECITT). This is a suite of experimental psychology tasks designed to measure inhibitory behaviour using trials presented on tablet computers.
