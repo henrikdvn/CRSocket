@@ -713,7 +713,7 @@ class CommTestClient {
 				this.curEventOutNo += 1;
 				if (this.curEventOutMinDt > 0 && this.curEventOutMaxDt >= this.curEventOutMinDt) {
 					this.curEventOutDt = Math.round(this.curEventOutMinDt  * 1000 + (this.curEventOutMaxDt - this.curEventOutMinDt) * 1000 * Math.random());
-					this.eventOutSubTypeInputElem.value = "multi";
+					this.eventOutSubTypeInputElem.value = "";
 					this.eventOutParam1InputElem.value = this.curEventOutNo;
 					this.eventOutParam2InputElem.value = this.curEventOutDt;
 					setTimeout(() => {

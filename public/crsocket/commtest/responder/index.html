@@ -175,34 +175,51 @@
 				</td>
 				<td class="setup">
 					<input class="setup optional" id="eventOutSubTypeInput" title="Event subType" type="text" placeholder="subType"></td>
-				<td class="setup evParam"><input class="setup evParam optional" id="eventOutParam1Input" title="Event param 1" type="text" placeholder="param1">
+				<td class="setup evParam">
+					<input class="setup evParam optional" id="eventOutParam1Input" title="Event param 1" type="text" placeholder="param1">
 				</td>
 				<td class="setup evParam">
 					<input class="setup evParam optional" id="eventOutParam2Input" title="Event param 2" type="text" placeholder="param2">
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutLogButton" title="The CREvent log attribute" onclick="client.flipFlagged(this.id)">Log</button>
+					<button class="setup evOption" id="eventOutLogButton" title="CREvent log attribute" onclick="client.flipFlagged(this.id)">Log</button>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutBufButton" onclick="client.flipFlagged(this.id)">Buf</button>
+					<button class="setup evOption" id="eventOutBufButton" title="CREvent buffered attribute" onclick="client.flipFlagged(this.id)">Buf</button>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutItcButton" onclick="client.flipFlagged(this.id)">Itc</button>
+					<button class="setup evOption" id="eventOutItcButton" title="CREvent interceptable attribute" onclick="client.flipFlagged(this.id)">Itc</button>
 				</td>
 			</tr>
 			<tr>
-				<td class="setup"><input class="setup" id="eventOutCountInput" type="number" placeholder="count" required></td>
+				<td class="setup">
+					<input class="setup" id="eventOutCountInput" title="Number of events" type="number" placeholder="count" required>
+				</td>
 				<td class="filler"></td>
-				<td class="setup evDt"><input class="setup evDt" id="eventOutMinDtInput" type="number" placeholder="minDt" required></td>
-				<td class="setup evDt"><input class="setup evDt" id="eventOutMaxDtInput" type="number" placeholder="maxDt" required></td>
-				<td class="filler" colspan="3"><button class="setup" id="eventOutSendButton" type="button" onclick="client.sendEventSeq()">Send</button></td>
+				<td class="setup evDt">
+					<input class="setup evDt" id="eventOutMinDtInput" title="Min secs between events" type="number" placeholder="minDt" required>
+				</td>
+				<td class="setup evDt">
+					<input class="setup evDt" id="eventOutMaxDtInput" title="Max secs between events" type="number" placeholder="maxDt" required>
+				</td>
+				<td class="filler" colspan="3">
+					<button class="setup" id="eventOutSendButton" title="Start the event sequence" type="button" onclick="client.sendEventSeq()">Send</button>
+				</td>
 			</tr>
 			<tr>
 				<th class="setup">Events received from the current partner</th>
-				<td class="setup"><input class="setup optional" id="eventInTypeInput" type="text" placeholder="type" readonly></td>
-				<td class="setup"><input class="setup optional" id="eventInSubTypeInput" type="text" placeholder="subType" readonly></td>
-				<td class="setup evParam"><input class="setup evParam optional" id="eventInParam1Input" type="text" placeholder="param1" readonly></td>
-				<td class="setup evParam"><input class="setup evParam optional" id="eventInParam2Input" type="text" placeholder="param2" readonly></td>
+				<td class="setup">
+					<input class="setup optional" id="eventInTypeInput" title="Event type" type="text" placeholder="type" readonly>
+				</td>
+				<td class="setup">
+					<input class="setup optional" id="eventInSubTypeInput" title="Event subType" type="text" placeholder="subType" readonly>
+				</td>
+				<td class="setup evParam">
+					<input class="setup evParam optional" id="eventInParam1Input" title="Event param 1" type="text" placeholder="param1" readonly>
+				</td>
+				<td class="setup evParam">
+					<input class="setup evParam optional" id="eventInParam2Input" title="Event param 2" type="text" placeholder="param2" readonly>
+				</td>
 				<td class="setup evOption"><button class="setup evOption" id="eventInLogButton" disabled>Log</button></td>
 				<td class="setup evOption"><button class="setup evOption" id="eventInBufButton" disabled>Buf</button></td>
 				<td class="setup evOption"><button class="setup evOption" id="eventInItcButton" disabled>Itc</button></td>
