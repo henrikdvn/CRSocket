@@ -40,6 +40,11 @@
 				<a href="../general/Terminology.html#partnerClientId">partnerClientId</a> assignment can only be done by the controller app.
 			</li>
 		</ul>
+		<p>
+			For multiple events use event type "multi" and specify number of events, and min/max secs between events. The parameters will be set to the current event number and the current delay to the next event in millisecs.
+			For single events you may optionally specify subType and two event parameters. In both cases it is possible to toggle the log, buffered and interceptable event flags.
+		</p>
+
 		<p>The app displays:</p>
 		<ul>
 			<li>

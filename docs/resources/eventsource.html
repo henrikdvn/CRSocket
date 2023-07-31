@@ -76,6 +76,11 @@
 				A messageEvent signalling that the event stream is active. This event must contain the pid of the current instance and all subsequent events must match this pid.
 			</dd>
 			
+			<dt id="alive">alive</dt>
+			<dd>
+				A messageEvent confirming that the eventsource has received an <span class="name">alive</span>. This event is used to measure the alive roundtrip time.
+			</dd>
+
 			<dt id="closed">closed</dt>
 			<dd>
 				A messageEvent confirming that the event stream has been closed. Must contain the current pid.
