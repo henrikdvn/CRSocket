@@ -18,7 +18,6 @@ echo "<p>CRSOCKET_PHP: ".CRSOCKET_PHP."</p>\n";
 echo "<h2>CRSocket directories</h2>\n";
 echo "<p>CRSOCKET_LOG: ".CRSOCKET_LOG."</p>\n";
 echo "<p>CRSOCKET_DATA: ".CRSOCKET_DATA."</p>\n";
-echo "<p>CRSOCKET_DOC: ".CRSOCKET_DOC."</p>\n";
 echo "<p>CRSOCKET_SOCK: ".CRSOCKET_SOCK."</p>\n";
 echo "</body>\n";
 echo "</html>\n";

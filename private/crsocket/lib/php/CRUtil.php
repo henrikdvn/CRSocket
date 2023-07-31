@@ -153,4 +153,11 @@ class CRUtil {
 			unlink($filePath);
 		}
 	}
+	
+	static function createIfNotExists($dirPath) {
+		if (!file_exists($dirPath)) {
+			mkdir($dirPath);
+		}
+	}
+
 }
