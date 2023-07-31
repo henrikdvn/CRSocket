@@ -23,7 +23,11 @@
 						<tr>
 							<td class="group">
 								<table class="info">
-									<tr><th class="info top" colspan="2">ServerIn</th></tr>
+									<tr>
+										<th class="info top" colspan="2">
+											<a href="https://neurolab.no/docs/crsocket/resources/eventsource.html#eventOutReq">ServerIn</a>
+										</th>
+									</tr>
 									<tr><th class="info count">open</th><td class="info count" id="noOfOpenEventsCell"></td></tr>
 									<tr><th class="info count">error</th><td class="info count" id="noOfErrorEventsCell"></td></tr>
 									<tr><th class="info count">hello</th><td class="info count" id="noOfHelloEventsCell"></td></tr>
@@ -35,7 +39,11 @@
 							</td>
 							<td class="group">
 								<table class="info">
-									<tr><th class="info top" colspan="2">ServerOut</th></tr>
+									<tr>
+										<th class="info top" colspan="2">
+											<a href="https://neurolab.no/docs/crsocket/resources/eventsource.html#eventInReq">ServerOut</a>
+										</th>
+									</tr>
 									<tr><th class="info count">alive</th><td class="info count" id="noOfOutgoingAliveEventsCell"></td></tr>
 									<tr><th class="info count">close</th><td class="info count" id="noOfCloseEventsCell"></td></tr>
 								</table>
@@ -61,7 +69,11 @@
 						<tr>
 							<td class="group">
 								<table class="info">
-									<tr><th class="info top" colspan="2">PartnerIn</th></tr>
+									<tr>
+										<th class="info top" colspan="2">
+											<a href="https://neurolab.no/docs/crsocket/General/protocol.html#commManagement">PartnerIn</a>
+										</th>
+									</tr>
 									<tr><th class="info count">ping</th><td class="info count" id="noOfIncomingPingEventsCell"></td></tr>
 									<tr><th class="info count">inactive</th><td class="info count" id="noOfIncomingInactiveEventsCell"></td></tr>
 									<tr><th class="info count">unassign</th><td class="info count" id="noOfIncomingUnassignEventsCell"></td></tr>
@@ -70,7 +82,11 @@
 							</td>
 							<td class="group">
 								<table class="info right">
-									<tr><th class="info top" colspan="2">PartnerOut</th></tr>
+									<tr>
+										<th class="info top" colspan="2">
+											<a href="https://neurolab.no/docs/crsocket/General/protocol.html#commManagement">PartnerOut</a>
+										</th>
+									</tr>
 									<tr><th class="info count">ping</th><td class="info count" id="noOfOutgoingPingEventsCell"></td></tr>
 									<tr><th class="info count">inactive</th><td class="info count" id="noOfOutgoingInactiveEventsCell"></td></tr>
 									<tr><th class="info count">unassign</th><td class="info count" id="noOfOutgoingUnassignEventsCell"></td></tr>
@@ -93,46 +109,86 @@
 		</table>
 		<table class="setup right">
 			<tr>
-				<th class="setup">Log</th>
-				<td class="setup"><button class="setup" id="logStatesButton" onclick="client.flipLogStates()">States</button></td>
-				<td class="setup"><button class="setup" id="logEventsButton" onclick="client.flipLogEvents()">Events</button></td>
+				<th class="setup">Console Logging</th>
+				<td class="setup">
+					<button class="setup" id="logStatesButton" title="Log all state changes" onclick="client.flipLogStates()">States</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="logEventsButton" title="Log all events" onclick="client.flipLogEvents()">Events</button>
+				</td>
 			</tr>
 		</table>
 		<hr>
 		<table class="setup right">
 			<tr>
 				<th class="setup" id="activeHeader">Active</th>
-				<td class="setup"><input class="setup" id="clientIdInput" type="text" placeholder="clientId" readonly></td>
-				<td class="setup"><button class="setup" id="resumeButton" type="button" onclick="client.resumeApp()">Resume</button></td>
-				<td class="setup"><button class="setup" id="pauseButton" type="button" onclick="client.pauseApp()">Pause</button></td>
-				<td class="setup"><button class="setup" id="clearClientIdButton" type="button" onclick="client.clearClientId()">Clear</button></td>
+				<td class="setup">
+					<input class="setup" id="clientIdInput" type="text" title="The current clientId (automatically assigned)" placeholder="clientId" readonly>
+				</td>
+				<td class="setup">
+					<button class="setup" id="resumeButton" title="Reactivate the CRSocket" type="button" onclick="client.resumeApp()">Resume</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="pauseButton" title="Deactivate the CRSocket" type="button" onclick="client.pauseApp()">Pause</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="clearClientIdButton" title="Clear the current clientId" type="button" onclick="client.clearClientId()">Clear</button>
+				</td>
 			</tr>
 			<tr>
 				<th class="setup" id="authHeader">Auth</th>
-				<td class="setup"><input class="setup" id="accessTokenInput" type="text" placeholder="Token"></td>
-				<td class="setup"><button class="setup" id="signInButton" type="button" onclick="client.assignAccessToken()">SignIn</button></td>
-				<td class="setup"><button class="setup" id="signOutButton" type="button" onclick="client.unassignAccessToken()">SignOut</button></td>
-				<td class="setup"><button class="setup" id="clearAccessTokenButton" type="button" onclick="client.clearAccessToken()">Clear</button></td>
+				<td class="setup">
+					<input class="setup" id="accessTokenInput" title="The current accessToken" type="text" placeholder="Token">
+				</td>
+				<td class="setup">
+					<button class="setup" id="signInButton" title="Sign in to the eventreciever" type="button" onclick="client.assignAccessToken()">SignIn</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="signOutButton" title="Sign out from the eventreciever" type="button" onclick="client.unassignAccessToken()">SignOut</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="clearAccessTokenButton" title="Clear the current accessToken" type="button" onclick="client.clearAccessToken()">Clear</button>
+				</td>
 			</tr>
 			<tr>
 				<th class="setup" id="pairedHeader">Paired</th>
-				<td class="setup"><input class="setup" id="partnerClientIdInput" type="text" placeholder="ClientId"></td>
-				<td class="setup"><button class="setup" id="assignPartnerClientIdButton" type="button" onclick="client.assignPartner()">Assign</button></td>
-				<td class="setup"><button class="setup" id="unassignPartnerClientIdButton" type="button" onclick="client.unassignPartner()">Unassign</button></td>
-				<td class="setup"><button class="setup" id="clearPartnerClientIdButton" type="button" onclick="client.clearPartner()">Clear</button></td>
+				<td class="setup">
+					<input class="setup" id="partnerClientIdInput" title="The current partnerClientId" type="text" placeholder="ClientId">
+				</td>
+				<td class="setup">
+					<button class="setup" id="assignPartnerClientIdButton" title="Assign the partnerClientId to the CRSocket" type="button" onclick="client.assignPartner()">Assign</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="unassignPartnerClientIdButton" title="Unassign the partnerClientId from the CRSocket" type="button" onclick="client.unassignPartner()">Unassign</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="clearPartnerClientIdButton" title="Clear the current partnerClientId" type="button" onclick="client.clearPartner()">Clear</button>
+				</td>
 			</tr>
 		</table>
 		<hr>
 		<table class="setup bottom right">
 			<tr>
-				<th class="setup" rowspan="2">Event out</th>
-				<td class="setup"><input class="setup" id="eventOutTypeInput" type="text" placeholder="type" required></td>
-				<td class="setup"><input class="setup optional" id="eventOutSubTypeInput" type="text" placeholder="subType"></td>
-				<td class="setup evParam"><input class="setup evParam optional" id="eventOutParam1Input" type="text" placeholder="param1"></td>
-				<td class="setup evParam"><input class="setup evParam optional" id="eventOutParam2Input" type="text" placeholder="param2"></td>
-				<td class="setup evOption"><button class="setup evOption" id="eventOutLogButton" onclick="client.flipFlagged(this.id)">Log</button></td>
-				<td class="setup evOption"><button class="setup evOption" id="eventOutBufButton" onclick="client.flipFlagged(this.id)">Buf</button></td>
-				<td class="setup evOption"><button class="setup evOption" id="eventOutItcButton" onclick="client.flipFlagged(this.id)">Itc</button></td>
+				<th class="setup" rowspan="2">Send events to the currently assigned partner</th>
+				<td class="setup">
+					<input class="setup" id="eventOutTypeInput" title="Event type" type="text" placeholder="type" required>
+				</td>
+				<td class="setup">
+					<input class="setup optional" id="eventOutSubTypeInput" title="Event subType" type="text" placeholder="subType"></td>
+				<td class="setup evParam"><input class="setup evParam optional" id="eventOutParam1Input" title="Event param 1" type="text" placeholder="param1">
+				</td>
+				<td class="setup evParam">
+					<input class="setup evParam optional" id="eventOutParam2Input" title="Event param 2" type="text" placeholder="param2">
+				</td>
+				<td class="setup evOption">
+					<button class="setup evOption" id="eventOutLogButton" title="The CREvent log attribute" onclick="client.flipFlagged(this.id)">Log</button>
+				</td>
+				<td class="setup evOption">
+					<button class="setup evOption" id="eventOutBufButton" onclick="client.flipFlagged(this.id)">Buf</button>
+				</td>
+				<td class="setup evOption">
+					<button class="setup evOption" id="eventOutItcButton" onclick="client.flipFlagged(this.id)">Itc</button>
+				</td>
 			</tr>
 			<tr>
 				<td class="setup"><input class="setup" id="eventOutCountInput" type="number" placeholder="count" required></td>
@@ -142,7 +198,7 @@
 				<td class="filler" colspan="3"><button class="setup" id="eventOutSendButton" type="button" onclick="client.sendEventSeq()">Send</button></td>
 			</tr>
 			<tr>
-				<th class="setup">Event in</th>
+				<th class="setup">Events received from the current partner</th>
 				<td class="setup"><input class="setup optional" id="eventInTypeInput" type="text" placeholder="type" readonly></td>
 				<td class="setup"><input class="setup optional" id="eventInSubTypeInput" type="text" placeholder="subType" readonly></td>
 				<td class="setup evParam"><input class="setup evParam optional" id="eventInParam1Input" type="text" placeholder="param1" readonly></td>

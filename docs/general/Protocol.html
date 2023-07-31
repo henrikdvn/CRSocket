@@ -67,7 +67,7 @@
 			<figcaption>State machine overview</figcaption>
 		</figure>
 		
-		<h2>Communication management</h2>
+		<h2 id="commManagement">Communication management</h2>
 		<p>
 			Pairing and communication monitoring is managed by means of the following crEvents:
 		</p>
@@ -80,14 +80,6 @@
 				For controller crSockets, the partnerClientId must be assigned by the enclosing client. For responder crSockets, the partnerClientId can either be assigned by the enclosing client or by a controller crSocket. If no partnerClientId has been assigned, responder crSockets will assign the sender of the first ping event sent from a controller client with matching appId, as partnerClient.
 			</dd>
 			
-			<dt id="reject">reject</dt>
-			<dd>
-				If a crSocket has been assigned a partnerClientId and receives a ping event from a client with a different clientId, it will respond with a reject event with subType <span class="name">assignedToOther</span>. If a ping event is blocked by a server resource, this resource must respond with a reject event with a subType explaining why the ping event was rejected.
-			</dd>
-			<dd>
-				When a crSocket receives a reject event, it will flag the currently assigned partnerClient as rejected. This will lead to an exit from the paired state, which in turn will stop the outgoing ping sequence. The flag will be removed when the clientId is reassigned or another clientId is assigned as partnerClient.
-			</dd>
-			
 			<dt id="unassign">unassign</dt>
 			<dd>
 				If the partnerClientId of a controller crSocket is unassigned, it must send an unassign event to the previously assigned partnerClient. If this client had the originating client assigned as partner, it will unassign it.
@@ -97,6 +89,14 @@
 			<dd>Will be sent to the current partnerClient when a crSocket client enters the <span class="name">passive</span> state.</dd>
 			<dd>
 				If the recipient client is in the interacting state, it will immediately enter the searching state without waiting for a partner inactive timeout.
+			</dd>
+			
+			<dt id="reject">reject</dt>
+			<dd>
+				If a crSocket has been assigned a partnerClientId and receives a ping event from a client with a different clientId, it will respond with a reject event with subType <span class="name">assignedToOther</span>. If a ping event is blocked by a server resource, this resource must respond with a reject event with a subType explaining why the ping event was rejected.
+			</dd>
+			<dd>
+				When a crSocket receives a reject event, it will flag the currently assigned partnerClient as rejected. This will lead to an exit from the paired state, which in turn will stop the outgoing ping sequence. The flag will be removed when the clientId is reassigned or another clientId is assigned as partnerClient.
 			</dd>
 		</dl>
 		
