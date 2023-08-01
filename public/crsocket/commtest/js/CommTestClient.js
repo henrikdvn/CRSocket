@@ -217,7 +217,7 @@ class CommTestClient {
 		// Initiate page contents
 		
 		let roleHeader =  this.clientRole.charAt(0).toUpperCase()+this.clientRole.slice(1);
-		document.title = "Commtest "+roleHeader;
+		document.title = "CommTest "+roleHeader;
 		this.replaceChildNodesWithText(this.roleHeaderElem, roleHeader);
 		this.replaceChildNodesWithText(this.versionHeaderElem, this.appVersion);
 		
@@ -431,7 +431,7 @@ class CommTestClient {
 		let partnerClientId = e.detail;
 		this.onInternalEvent("partnerClientIdChanged", partnerClientId);
 		this.replaceChildNodesWithText(this.partnerClientIdElem, partnerClientId);
-		if (this.clientRole == "responder" && this.partnerClientIdInputElem.value != partnerClientId) {
+		if (this.partnerClientIdInputElem.value == "" && this.partnerClientIdInputElem.value != partnerClientId) {
 			this.partnerClientIdInputElem.value = partnerClientId;
 		}
 	}

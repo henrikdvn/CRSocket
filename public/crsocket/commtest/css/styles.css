@@ -42,13 +42,15 @@ td.state {width: 16ex}
 
 td.filler {text-align: center}
 
-th.setup {width: 6ex}
+th.setup {}
 td.setup {text-align: center; width: 12ex}
 
 td.evParam, td.evDt {width: 11ex}
 td.evOption {width: 6ex}
 
 th.flagged, button.flagged, button:disabled.flagged, input.flagged {color: green}
+
+a.infoSym, a.infoSym:visited {font-family: serif; color: #00e; font-weight: normal; text-decoration: none}
 
 input.setup, button.setup {font-weight: bold; text-align:center; height:4ex; border: 1px solid black; padding: 0; background-color: #fff}
 

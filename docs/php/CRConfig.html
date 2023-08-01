@@ -14,11 +14,15 @@
 		
 		<h2>Contstructor</h2>
 		<dl>
-			<dt>__construct($resourceName, $appLogRoot, $appDataRoot, $crsSockRoot, $crsDataRoot)</dt>
+			<dt>__construct($appId, $resourceName, $appLogRoot, $appDataRoot, $crsSockRoot, $crsDataRoot)</dt>
 			<dd>
 				<details>
 					<summary>Parameters</summary>
 					<dl>
+						<dt>$appId</dt>
+						<dd class="dataType">String, required</dd>
+						<dd>Name of the current appId, eg. "commtest" or "mathtrials"</dd>
+						
 						<dt>$resourceName</dt>
 						<dd class="dataType">String, required</dd>
 						<dd>Name of the current resource, eg. "clientid", "eventsource", "sendevent"</dd>
@@ -37,7 +41,7 @@
 						
 						<dt>$crsDataRoot</dt>
 						<dd class="dataType">String, required</dd>
-						<dd>Path to the directory used for data files related to the current IP domain</dd>
+						<dd>Path to the directory used for data files</dd>
 					</dl>
 				</details>
 			</dd>
@@ -72,11 +76,15 @@
 			
 			<dt id="socketAcceptDtSecs">$socketAcceptDtSecs</dt>
 			<dd class="dataType">Integer, readonly, default = 10</dd>
-			<dd>Max amount of secs before socket conditions are checked by a <a href="CREvent.htmlSource">CREventSource</a></dd>
+			<dd>Max amount of secs before socket conditions are checked by a
+				<a href="CREvent.htmlSource">CREventSource</a>
+			</dd>
 			
 			<dt id="maxPrevAliveDtSecs">$maxPrevAliveDtSecs</dt>
 			<dd class="dataType">Integer, default = 25</dd>
-			<dd>Max amount of secs allowed between <span class="name">alive</span> events in a <a href="CREvent.htmlSource">CREventSource</a> before the requesting client is considered inactive</dd>
+			<dd>Max amount of secs allowed between <span class="name">alive</span> events in a
+				<a href="CREvent.htmlSource">CREventSource</a> before the requesting client is considered inactive
+			</dd>
 			
 			<dt id="sendEventRetryDtSecs">$sendEventRetryDtSecs</dt>
 			<dd class="dataType">Integer, default = 1</dd>
@@ -88,7 +96,10 @@
 			
 			<dt id="maxEventDataStrLength">$maxEventDataStrLength</dt>
 			<dd class="dataType">Integer, default = 8192</dd>
-			<dd>Max length of data strings that can be transmitted between a <a href="CREvent.htmlSender">CREventSender</a> and a <a href="CREvent.htmlSource">CREventSource</a></dd>
+			<dd>
+				Max length of data strings that can be transmitted between a
+				<a href="CREvent.htmlSender">CREventSender</a> and a <a href="CREvent.htmlSource">CREventSource</a>
+			</dd>
 			
 			<dt id="eventDataSplitChar">$eventDataSplitChar</dt>
 			<dd class="dataType">String, default = ","</dd>

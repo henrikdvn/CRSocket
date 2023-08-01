@@ -16,6 +16,17 @@
 	</head>
 	<body onload="config = new CRConfig('commtest'); client = new CommTestClient(config, 'responder'); client.init()">
 		<h1>CommTest <span id="roleHeaderSpan"></span> <span id="versionHeaderSpan"></span></h1>
+		<table class="setup right">
+			<tr>
+				<th class="setup" title="JavaScript console logging">JavaScript console logging</th>
+				<td class="setup">
+					<button class="setup" id="logStatesButton" title="Log all state changes in the crSocket and its internal eventReceiver and eventSender" onclick="client.flipLogStates()">States</button>
+				</td>
+				<td class="setup">
+					<button class="setup" id="logEventsButton" title="Log all events transmitted from the crSocket and its internal eventReceiver and eventSender" onclick="client.flipLogEvents()">Events</button>
+				</td>
+			</tr>
+		</table>
 		<table class="group">
 			<tr>
 				<td class="group">
@@ -24,28 +35,31 @@
 							<td class="group">
 								<table class="info">
 									<tr>
-										<th class="info top" colspan="2" title="Number of events received from the current JavaScript EventSource object, including message events transmitted from the eventsource resource">ServerIn</th>
+										<th class="info top" colspan="2" title="Number of 'open', 'error' and 'message' events received by the eventReceiver from its EventSource object. Message events transmitted from the eventsource are divided by type. All types are included except 'crEvent'">
+											ServerIn
+											<a class="infoSym" href="/docs/crsocket/resources/eventsource.html#protocol">ⓘ</a>
+										</th>
 									</tr>
 									<tr><th class="info count" title="EventSource.open">open</th><td class="info count" id="noOfOpenEventsCell"></td></tr>
 									<tr><th class="info count" title="EventSource.error">error</th><td class="info count" id="noOfErrorEventsCell"></td></tr>
 									<tr>
-										<th class="info count" title="Indicates that the event stream has been activated">hello</th>
+										<th class="info count" title="EventSource.message event signalling that the event stream has been activated">hello</th>
 										<td class="info count" id="noOfHelloEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="Confirms reception of an alive event">alive</th>
+										<th class="info count" title="EventSource.message event confirming reception of an alive event">alive</th>
 										<td class="info count" id="noOfIncomingAliveEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="Confirms reception of a close event and subsequent closing">closed</th>
+										<th class="info count" title="EventSource.message event confirming reception of a close event and subsequent closing">closed</th>
 										<td class="info count" id="noOfClosedEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="Indicates that the eventsource has been aborted by CRSocket software">aborted</th>
+										<th class="info count" title="EventSource.message event signalling that the eventsource has been aborted by CRSocket software">aborted</th>
 										<td class="info count" id="noOfAbortedEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="Indicates that the eventsource has been forced to shut down by the server">shutdown</th>
+										<th class="info count" title="EventSource.message event signalling that the eventsource has been forced to shut down by the server">shutdown</th>
 										<td class="info count" id="noOfShutdownEventsCell"></td>
 									</tr>
 								</table>
@@ -53,20 +67,26 @@
 							<td class="group">
 								<table class="info">
 									<tr>
-										<th class="info top" colspan="2" title="">ServerOut</a></th>
+										<th class="info top" colspan="2" title="Number of 'alive' and 'close' events sent from the eventReceiver to the eventsource via its internal eventSender">
+											ServerOut
+											<a class="infoSym" href="/docs/crsocket/resources/eventsource.html#protocol">ⓘ</a>
+										</th>
 									</tr>
 									<tr>
-										<th class="info count" title="">alive</th>
+										<th class="info count" title="Signals that the eventReceiver is active and that the eventsource should stay open">alive</th>
 										<td class="info count" id="noOfOutgoingAliveEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="">close</th>
+										<th class="info count" title="Signals that the eventsource should close">close</th>
 										<td class="info count" id="noOfCloseEventsCell"></td>
 									</tr>
 								</table>
 								<table class="info">
 									<tr>
-										<th class="info top" colspan="2" title="EventReceiver timing info">Timing</th>
+										<th class="info top" colspan="2" title="EventReceiver timing info (millisecs)">
+											Timing
+											<a class="infoSym" href="/docs/crsocket/apps/CommTest.html#eventReceiverTiming">ⓘ</a>
+										</th>
 									</tr>
 									<tr>
 										<th class="info millisecs" title="Time spent in the last connecting state">conn</th>
@@ -87,7 +107,12 @@
 						</tr>
 					</table>
 					<table class="info">
-						<tr><th class="info top" colspan="2" title="Currently assigned CRSocket parameters">Parameters</th></tr>
+						<tr>
+							<th class="info top" colspan="2" title="Currently assigned CRSocket parameters">
+								CRSocket properties
+								<a class="infoSym" href="/docs/crsocket/js/CRSocket.html#properties">ⓘ</a>
+							</th>
+						</tr>
 						<tr><th class="info param">clientId</th><td class="info param" id="clientIdCell"></td></tr>
 						<tr><th class="info param">accessToken</th><td class="info param" id="accessTokenCell"></td></tr>
 						<tr><th class="info param">partnerClientId</th><td class="info param" id="partnerClientIdCell"></td></tr>
@@ -99,22 +124,25 @@
 							<td class="group">
 								<table class="info">
 									<tr>
-										<th class="info top" colspan="2" title="Number of protocol crEvents received from the current partner">PartnerIn</th>
+										<th class="info top" colspan="2" title="Number of communication management crEvents received from the current partner">
+											PartnerIn
+											<a class="infoSym" href="/docs/crsocket/general/Protocol.html#commManagement">ⓘ</a>
+										</th>
 									</tr>
 									<tr>
-										<th class="info count" title="Indicates that a remote crSocket is active and ready to interact">ping</th>
+										<th class="info count" title="Signals that a remote crSocket is active and ready to interact">ping</th>
 										<td class="info count" id="noOfIncomingPingEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="Indicates that a remote crSocket has become inactive">inactive</th>
+										<th class="info count" title="Signals that a remote crSocket has become inactive">inactive</th>
 										<td class="info count" id="noOfIncomingInactiveEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="Indicates that the current crSocket has been unassigned as partnerClient">unassign</th>
+										<th class="info count" title="Signals that the current crSocket has been unassigned as partnerClient">unassign</th>
 										<td class="info count" id="noOfIncomingUnassignEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count" title="Indicates that a remote crSocket has refused to interact">reject</th>
+										<th class="info count" title="Signals that a remote crSocket has refused to interact">reject</th>
 										<td class="info count" id="noOfIncomingRejectEventsCell"></td>
 									</tr>
 								</table>
@@ -122,22 +150,25 @@
 							<td class="group">
 								<table class="info right">
 									<tr>
-										<th class="info top" colspan="2" title="Number of protocol crEvents sent to the current partner">PartnerOut</th>
+										<th class="info top" colspan="2" title="Number of communication management crEvents sent to the current partner">
+											PartnerOut
+											<a class="infoSym" href="/docs/crsocket/general/Protocol.html#commManagement">ⓘ</a>
+										</th>
 									</tr>
 									<tr>
-										<th class="info count">ping</th>
+										<th class="info count" title="Signals that a remote crSocket is active and ready to interact">ping</th>
 										<td class="info count" id="noOfOutgoingPingEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count">inactive</th>
-										<td class="info count" id="noOfOutgoingInactiveEventsCell"></td>
+										<th class="info count" title="Signals that the current crSocket has been unassigned as partnerClient">inactive</th>
+										<td class="info count" id="noOfOutgoingInactiveEventsCell" title="Signals that a remote crSocket has become inactive"></td>
 									</tr>
 									<tr>
-										<th class="info count">unassign</th>
+										<th class="info count" title="Signals that the current crSocket has been unassigned as partnerClient">unassign</th>
 										<td class="info count" id="noOfOutgoingUnassignEventsCell"></td>
 									</tr>
 									<tr>
-										<th class="info count">reject</th>
+										<th class="info count" title="Signals that a remote crSocket has refused to interact">reject</th>
 										<td class="info count" id="noOfOutgoingRejectEventsCell"></td>
 									</tr>
 								</table>
@@ -145,7 +176,11 @@
 						</tr>
 					</table>
 					<table class="info right">
-						<tr><th class="info top" colspan="2" title="Current states and subStates of the crSocket and its internal eventReceiver and eventSender">States</th></tr>
+						<tr>
+							<th class="info top" colspan="2" title="Current states and subStates of the crSocket and its internal eventReceiver and eventSender">
+								State monitoring
+								<a class="infoSym" href="/docs/crsocket/general/Protocol.html#states">ⓘ</a></th>
+						</tr>
 						<tr><th class="info state">socketState</th><td class="info state" id="socketStateCell"></td></tr>
 						<tr><th class="info state">socketSubState</th><td class="info state" id="socketSubStateCell"></td></tr>
 						<tr><th class="info state">receiverState</th><td class="info state" id="eventReceiverStateCell"></td></tr>
@@ -156,23 +191,18 @@
 				</td>
 			</tr>
 		</table>
-		<table class="setup right">
-			<tr>
-				<th class="setup" title="JavaScript console logging">Logging</th>
-				<td class="setup">
-					<button class="setup" id="logStatesButton" title="Log all state changes in the crSocket and its internal eventReceiver and eventSender" onclick="client.flipLogStates()">States</button>
-				</td>
-				<td class="setup">
-					<button class="setup" id="logEventsButton" title="Log all events transmitted from the crSocket and its internal eventReceiver and eventSender" onclick="client.flipLogEvents()">Events</button>
-				</td>
-			</tr>
-		</table>
 		<hr>
 		<table class="setup right">
 			<tr>
-				<th class="setup" id="activeHeader" title="Will be green when the crSocket is active">Active</th>
+				<th colspan="5" class="setup" id="configurationHeader" title="Activation, identification, authentication and pairing">
+					CRSocket configuration
+					<a class="infoSym" href="/docs/crsocket/apps/CommTest.html#socketConfig">ⓘ</a>
+				</th>
+			</tr>
+			<tr>
+				<th class="setup" id="activeHeader" title="CRSocket active metaState, Will be green when the crSocket is in the active state">Active</th>
 				<td class="setup">
-					<input class="setup" id="clientIdInput" type="text" title="The current clientId (automatically assigned)" placeholder="clientId" readonly>
+					<input class="setup" id="clientIdInput" type="text" title="The current clientId (automatically assigned), will be green when the crSocket is active" placeholder="clientId" readonly>
 				</td>
 				<td class="setup">
 					<button class="setup" id="resumeButton" title="Reactivate the crSocket" type="button" onclick="client.resumeApp()">Resume</button>
@@ -185,61 +215,67 @@
 				</td>
 			</tr>
 			<tr>
-				<th class="setup" id="authHeader" title="Will be green when the crSocket is successfully signed in">Auth</th>
+				<th class="setup" id="authHeader" title="Authentication, will be green when the crSocket is successfully signed in">Authenticated</th>
 				<td class="setup">
-					<input class="setup" id="accessTokenInput" title="The current accessToken" type="text" placeholder="Token">
+					<input class="setup" id="accessTokenInput" title="The current accessToken, will be green when the crSocket is successfully signed in" type="text" placeholder="Token">
 				</td>
 				<td class="setup">
 					<button class="setup" id="signInButton" title="Sign in to the eventreciever" type="button" onclick="client.assignAccessToken()">SignIn</button>
 				</td>
 				<td class="setup">
-					<button class="setup" id="signOutButton" title="Sign out from the eventreciever" type="button" onclick="client.unassignAccessToken()">SignOut</button>
+					<button class="setup" id="signOutButton" title="Sign out from the eventreciever without clearing the accessToken input field" type="button" onclick="client.unassignAccessToken()">SignOut</button>
 				</td>
 				<td class="setup">
-					<button class="setup" id="clearAccessTokenButton" title="Clear the current accessToken" type="button" onclick="client.clearAccessToken()">Clear</button>
+					<button class="setup" id="clearAccessTokenButton" title="Sign out from the eventreciever and clear the input field" type="button" onclick="client.clearAccessToken()">Clear</button>
 				</td>
 			</tr>
 			<tr>
-				<th class="setup" id="pairedHeader" title="Will be green when the crSocket is paired with another socket">Paired</th>
+				<th class="setup" id="pairedHeader" title="Pairing, will be green when the crSocket is interacting with the assigned partnerClient">Interacting</th>
 				<td class="setup">
-					<input class="setup" id="partnerClientIdInput" title="The current partnerClientId" type="text" placeholder="ClientId">
+					<input class="setup" id="partnerClientIdInput" title="The current partnerClientId, will be green when the crSocket is interacting with the assigned partnerClient" type="text" placeholder="ClientId">
 				</td>
 				<td class="setup">
 					<button class="setup" id="assignPartnerClientIdButton" title="Assign the partnerClientId to the crSocket" type="button" onclick="client.assignPartner()">Assign</button>
 				</td>
 				<td class="setup">
-					<button class="setup" id="unassignPartnerClientIdButton" title="Unassign the partnerClientId from the crSocket" type="button" onclick="client.unassignPartner()">Unassign</button>
+					<button class="setup" id="unassignPartnerClientIdButton" title="Unassign the partnerClientId from the crSocket without clearing the input field" type="button" onclick="client.unassignPartner()">Unassign</button>
 				</td>
 				<td class="setup">
-					<button class="setup" id="clearPartnerClientIdButton" title="Clear the current partnerClientId" type="button" onclick="client.clearPartner()">Clear</button>
+					<button class="setup" id="clearPartnerClientIdButton" title="Unassign the partnerClientId from the crSocket and clear the input field" type="button" onclick="client.clearPartner()">Clear</button>
 				</td>
 			</tr>
 		</table>
 		<hr>
 		<table class="setup bottom right">
 			<tr>
+				<th colspan="8" class="setup" id="transmissionHeader" title="Test event transmission success rate, accuracy, functionality and timing">
+					Event transmission
+					<a class="infoSym" href="/docs/crsocket/apps/CommTest.html#eventTransmission">ⓘ</a>
+				</th>
+			</tr>
+			<tr>
 				<th class="setup" rowspan="2" title="Send one or more custom events to the currently assigned partner. Use eventType 'multi' to send event sequences.">
-					Event out
+					Event<br>out
 				</th>
 				<td class="setup">
-					<input class="setup" id="eventOutTypeInput" title="Event type" type="text" placeholder="eventType" required>
+					<input class="setup" id="eventOutTypeInput" title="CREvent type" type="text" placeholder="eventType" required>
 				</td>
 				<td class="setup">
-					<input class="setup optional" id="eventOutSubTypeInput" title="Event subType" type="text" placeholder="subType"></td>
+					<input class="setup optional" id="eventOutSubTypeInput" title="CREvent subType" type="text" placeholder="subType"></td>
 				<td class="setup evParam">
-					<input class="setup evParam optional" id="eventOutParam1Input" title="Event param 1" type="text" placeholder="param1">
+					<input class="setup evParam optional" id="eventOutParam1Input" title="CREvent param 1" type="text" placeholder="param1">
 				</td>
 				<td class="setup evParam">
-					<input class="setup evParam optional" id="eventOutParam2Input" title="Event param 2" type="text" placeholder="param2">
+					<input class="setup evParam optional" id="eventOutParam2Input" title="CREvent param 2" type="text" placeholder="param2">
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutLogButton" title="log attribute" onclick="client.flipFlagged(this.id)">Log</button>
+					<button class="setup evOption" id="eventOutLogButton" title="CREvent log attribute" onclick="client.flipFlagged(this.id)">Log</button>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutBufButton" title="buffered attribute" onclick="client.flipFlagged(this.id)">Buf</button>
+					<button class="setup evOption" id="eventOutBufButton" title="CREvent buffered attribute" onclick="client.flipFlagged(this.id)">Buf</button>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutItcButton" title="interceptable attribute" onclick="client.flipFlagged(this.id)">Itc</button>
+					<button class="setup evOption" id="eventOutItcButton" title="CREvent interceptable attribute" onclick="client.flipFlagged(this.id)">Itc</button>
 				</td>
 			</tr>
 			<tr>
@@ -254,32 +290,33 @@
 					<input class="setup evDt" id="eventOutMaxDtInput" title="Max secs between events" type="number" placeholder="maxDt" required>
 				</td>
 				<td class="filler" colspan="3">
-					<button class="setup" id="eventOutSendButton" title="Start the event sequence" type="button" onclick="client.sendEventSeq()">Send</button>
+					<button class="setup" id="eventOutSendButton" title="Send the event or start an event sequence" type="button" onclick="client.sendEventSeq()">Send</button>
 				</td>
 			</tr>
 			<tr>
 				<th class="setup" title="Custom events received from the current partner">
-					Event in
+					Event<br>in
 				</th>
 				<td class="setup">
-					<input class="setup optional" id="eventInTypeInput" title="Event type" type="text" placeholder="type" readonly>
+					<input class="setup optional" id="eventInTypeInput" title="CREvent type" type="text" placeholder="type" readonly>
 				</td>
 				<td class="setup">
-					<input class="setup optional" id="eventInSubTypeInput" title="Event subType" type="text" placeholder="subType" readonly>
+					<input class="setup optional" id="eventInSubTypeInput" title="CREvent subType" type="text" placeholder="subType" readonly>
 				</td>
 				<td class="setup evParam">
-					<input class="setup evParam optional" id="eventInParam1Input" title="Event param 1" type="text" placeholder="param1" readonly>
+					<input class="setup evParam optional" id="eventInParam1Input" title="CREvent param 1, will contain the current eventNumber for multiEvents" type="text" placeholder="param1" readonly>
 				</td>
 				<td class="setup evParam">
-					<input class="setup evParam optional" id="eventInParam2Input" title="Event param 2" type="text" placeholder="param2" readonly>
+					<input class="setup evParam optional" id="eventInParam2Input" title="CREvent param 2, will contain the current eventDelay for multiEvents" type="text" placeholder="param2" readonly>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventInLogButton" title="log attribute" disabled>Log</button></td>
-				<td class="setup evOption">
-					<button class="setup evOption" id="eventInBufButton" title="buffered attribute" disabled>Buf</button>
+					<button class="setup evOption" id="eventInLogButton" title="CREvent log attribute" disabled>Log</button>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventInItcButton" title="interceptable attribute" disabled>Itc</button>
+					<button class="setup evOption" id="eventInBufButton" title="CREvent buffered attribute" disabled>Buf</button>
+				</td>
+				<td class="setup evOption">
+					<button class="setup evOption" id="eventInItcButton" title="CREvent interceptable attribute" disabled>Itc</button>
 				</td>
 			</tr>
 		</table>

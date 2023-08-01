@@ -25,7 +25,7 @@
 			<dd>The role of the recipient client ("controller" or "responder")</dd>
 			
 			<dt id="accessToken">accessToken</dt>
-			<dd>An URLEncoded string containing the accessToken used to identify the current user and determine access rights</dd>
+			<dd>An URLEncoded string containing the accessToken used to identify the current user and determine access rights<./dd>
 		</dl>
 		
 		
@@ -34,16 +34,16 @@
 		
 		<h2 id="protocol">Event handling protocol</h2>
 		<p>Incoming events not listed below will be ignored</p>
-		<p>For incoming events, the appId, clientRole, clientId and accessToken of the sender must be available for internal use</p>
 		
 		<h3 id="eventInReq">Incoming events from the connected client</h3>
 		<p>These events must contain the pid of the senders current eventsource instance</p>
 		<p>Events from senders with a clientId, clientRole or eventSourcePid not matching the current instance will be ignored.</p>
 		<dl>
 			<dt id="alive">alive</dt>
-			<dd>A messageEvent signalling that the recipient client is alive</dd>
+			<dd>A messageEvent signalling that the recipient client is alive. This event is used to keep the resource open when the client is not interacting with a partnerClient.</dd>
 			<dd>
-				The eventSource should be closed when it has not received such events for <a href="../php/CRConfig.html#maxPrevAliveDtSecs">maxPrevAliveDtSecs</a> millisecs.
+				The eventSource should be closed when it has not received any events for
+				<a href="../php/CRConfig.html#maxPrevAliveDtSecs">maxPrevAliveDtSecs</a> millisecs.
 			</dd>
 			
 			<dt id="close">close</dt>
@@ -87,7 +87,7 @@
 			</dd>
 			
 			<dt id="aborted">aborted</dt>
-			<dd>A messageEvent signalling that the event stream has been aborted</dd>
+			<dd>A messageEvent signalling that the event stream has been aborted by CRSocket software.</dd>
 			<dd>
 				Must contain the current pid, and a (potentially empty) code indicating why the stream was aborted. If the abortion was caused by a
 				<span class="name">release</span> event, it must also contain the pid of the releasing eventsource.
