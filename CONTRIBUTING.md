@@ -14,4 +14,4 @@ I appreciate any type of feedback, especially issues related to usage in differe
 
 ## Seeking support
 
-I will respoind to concrete questions about the software and use them as a basis for improving the documentation. 
+I will respond to concrete questions about the software and use them as a basis for improving the documentation. 
