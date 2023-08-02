@@ -25,7 +25,7 @@
 			</dd>
 		</dl>
 		
-		<h2>Properties</h2>
+		<h2 id="properties">Properties</h2>
 		<dl>
 			<dt id="eventType">eventType</dt>
 			<dd class="dataType">String, default = ""</dd>
@@ -40,11 +40,11 @@
 			<dd>Array of strings or values that will be correctly converted when default JavaScript string conversion is applied</dd>
 			<dd>The strings must not contain the <a href="CRConfig.html#eventDataSplitChar">$eventDataSplitChar</a> ("," by default)</dd>
 			
-			<dt>buffered</dt>
+			<dt id="buffered">buffered</dt>
 			<dd class="dataType">Boolean, default = false</dd>
 			<dd>If true, the event will be saved if the client is offline and sent (if possible) when it becomes online</dd>
 			
-			<dt>logged</dt>
+			<dt id="logged">logged</dt>
 			<dd class="dataType">Boolean, default = false</dd>
 			<dd>If true the event will always be logged by the eventSender, even if not sent</dd>
 			

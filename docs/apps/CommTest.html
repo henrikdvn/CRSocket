@@ -3,12 +3,12 @@
 	<head>
 		<title>CRSocket, CommTest</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<link href="../css/styles.css" rel="stylesheet" type="text/css">
-	</head>
+			<link href="../css/styles.css" rel="stylesheet" type="text/css">
+			</head>
 	<body>
 		<h1>CommTest</h1>
 		<p>
-			This application facilitates testing of the CRSocket component, using default settings. It consists of a controller/responder app pair that are identical, except that they are initiated with "controller" and "responder"
+			This application facilitates testing of the CRSocket component, using default configuration settings. It consists of a controller/responder app pair that are identical, except that they are initiated with "controller" and "responder"
 			<a href="../general/Terminology.html#clientRole">clientRoles</a> respectively.
 		</p>
 		
@@ -16,62 +16,140 @@
 		
 		<h2 id="functionality">Functionality</h2>
 		
-			<h3>JavaScript Console logging</h3>
-			<p>
-				All state changes and events transmitted from the crSocket and its internal CREventReceiver and CREventSender objects can be logged in the JavaScript console. Each log entry includes time in millisecs since the previous entry.
-			</p>
+		<h3>JavaScript Console logging</h3>
+		<p>
+			All state changes and events transmitted from the
+			<a href="../js/CRSocket.html">CRSocket</a> object and its internal
+			<a href="../js/CREventReceiver.html">CREventReceiver</a> and
+			<a href="../js/CREventSender.html">CREventSender</a> objects can be logged in the JavaScript console.
+			Each log entry includes time in millisecs since the previous entry.
+		</p>
 		
-			<h3 id="serverComm">Low level server management</h3>
-			<p>
-				The app displays the number of 'open', 'error' and 'message' events received by the internal crEventReceiver from its EventSource object. Message events transmitted from the eventsource are divided by type. All types are included except 'crEvent'.
-				
-				Except from the
-				<a href="../resources/clientid.html">clientid</a> generator resource, all communication from the server passes through the
-				<a href="../resources/eventsource.html">eventsource</a> resource. Similarly all communication to the server goes through the
-				<a href="../resources/sendevent.html">sendevent</a> resource which is unidirectional and does not return any information. This means that all low level server managements are handled by these events.
-			</p>
-			
-			<h3 id="eventReceiverTiming">EventReceiver timing</h3>
-			<p>
-				The app displays the amount of time internal
-				<a href="../js/CREventReceiver.html">CREventReceiver</a> objects spends in connecting, open and closed states
-			</p>
-			<p>The round trip time of <a href="../resources/eventsource.html#aliveEvent">alive</a> messsageEvents.</p>
-
-			<h3 id="commManagement">High level communication management</h3>
-			<p>
-				Number of
-				<a class="infoSym" href="/docs/crsocket/general/Protocol.html#commManagement">communication management events</a> transmitted between
-				<a href="../general/Terminology.html#crSocket">CRSocket</a> clients.
-			</p>
-			
-			<h3 id="stateMonitoring">State monitoring</h3>
-			<p>
-				Current state and subState of the CRSocket object, and its internal CREventReceiver and CREventSender objects.
-			</p>
-			
-			<h3 id="socketProperties">Socket properties</h3>
-			<p>
-				Core properties currently assigned to the CRSocket object: clientId, accessToken and partnerClientId.
-				<a href="../general/Terminology.html#partnerClientId">partnerClientId</a> assignment can only be done by the controller app.
-			</p>
-
-			<h3 id="socketConfig">Socket configuration</h3>
-			<p>
-				Handling of various types of errors and exceptions. This includes the pairing procedure.
-				<a href="../general/Terminology.html#partnerClientId">partnerClientId</a> assignment can only be done by the controller app.
+		<h3 id="serverComm">Low level server management</h3>
+		<p>
+			The app displays the number of "open", "error" and "message" events received by the internal CREventReceiver object (ServerIn) and events sent to the server by the CREventSender object (ServerOut). Message events are divided by type. All message event types are included except "crEvent".
 		</p>
-			
-			<h3 id="eventTransmission">Event transmission</h3>
-			<p>
-				Success rate, delays and reception accuracy of
-				<a href="../general/Terminology.html#crEvent">crEvents</a> transmitted between
-				<a href="../general/Terminology.html#CRSocket_client">CRSocket clients</a>.
-			</p>
-			
-			<p>
-			For multiple events use event type "multi" and specify number of events, and min/max secs between events. The parameters will be set to the current event number and the current delay to the next event in millisecs.
-			For single events you may optionally specify subType and two event parameters. In both cases it is possible to toggle the log, buffered and interceptable event flags.
+		<p>
+			Except for the
+			<a href="../resources/clientid.html">clientid</a> generator resource, all communication <b>from</b> the server passes through the
+			<a href="../resources/eventsource.html">eventsource</a> resource.
+			All communication <b>to</b> the server goes through the
+			<a href="../resources/sendevent.html">sendevent</a> resource which is unidirectional and does not return any information. This means that all low level server managements are handled by these events.
 		</p>
+		
+		<p>Things to look out for:</p>
+		<ul>
+			<li>
+				"error" events should only occur when the network connection between client and server is broken.
+			</li>
+			<li>
+				"alive" events should only be sent when there are no other incoming events.
+			</li>
+			<li>
+				"alive" and "close" events should immediately trigger "closed" and "alive" events respectively at the server.
+			</li>
+		</ul>
+		
+		<h3 id="socketComm">Communication management events between CRSocket clients</h3>
+		<p>
+			The app displays the number of
+			<a class="infoSym" href="../general/Protocol.html#commManagement">communication management events</a> transmitted between
+			clients (PartnerIn and PartnerOut).
+		</p>
+		
+		<p>Things to look out for:</p>
+		<ul>
+			<li>
+				The number of PartnerOut events should correspond to the number of PartnerIn events at the partnerClient and vice versa.
+			</li>
+			<li>
+				When a crClient enters the "passive" state for some reason, it should transmit an "inactive" event to its partnerClient if possible.
+			</li>
+			<li>
+				When a controller attempts to pair with a responder which is already connected to another controller, the responder should respond with a "reject" event. Pairing attempts from responders and from clients with equal roles or mismatching appId"s should also be rejected.
+			</li>
+		</ul>
+		
+		
+		<h3 id="eventReceiverTiming">EventReceiver timing</h3>
+		<p>
+			The app displays the amount of millisecs the
+			CREventReceiver object spends in "connecting", "open" and "closed" states and the round trip time of
+			"alive" events.
+		</p>
+		
+		<p>Things to look out for:</p>
+		<ul>
+			<li>
+				Amount of time spent in the "connecting" state should not differ too much from round-trip time of "alive" events. Both indicate mimimum transmission delays between client and server.
+			</li>
+			<li>
+				Amount of time spent in the "open" state should normally correspond the max execution time setting at the server.
+			</li>
+			<li>
+				When the crSocket is in the "active" meta state, the amount of time spent in the "connecting" state should be close to zero.
+			</li>
+		</ul>
+		
+		
+		<h3 id="stateMonitoring">State monitoring</h3>
+		<p>
+			Current states and subStates of the CRSocket object, and its internal CREventReceiver and CREventSender objects. When the CRSocket object is not interacting with a partnerClient, subStates will in most cases reflect the reason why.
+		</p>
+		
+		<h3 id="socketProperties">Socket properties</h3>
+		<p>Core properties currently assigned to the CRSocket object:</p>
+		<ul>
+			<li><a href="../general/Terminology.html#clientIdId">clientId</a></li>
+			<li><a href="../general/Terminology.html#accessToken">accessToken</a></li>
+			<li><a href="../general/Terminology.html#partnerClientId">partnerClientId</a></li>
+		</ul>
+		
+		<h3 id="socketConfig">Socket configuration</h3>
+		<p>
+			Assignment of the core CRSocket properties.
+		</p>
+		<p>Please note:</p>
+		<ul>
+			<li>
+				The clientId should be automatically generated by the server. When it is cleared a new clientId should immediately be generated.
+			</li>
+			<li>
+				The "Resume" and "Pause" buttons forces the crSocket to enter the "passive" state and "active" metaState respectively. The socket can also be passivated by unloading the page, or making it invisible or offline. When passivated, the socket should immediately try to disconnect from its eventsource and send an "inactive" event to its partnerClient (if assigned). When activated and assigned an authToken, it should try to reconnect. If successfully connected and assigned an a partnerClientId it should also reach out and try to interact with its partnerClient.
+			</li>
+			<li>
+				The authToken must be a non-empty string of printable Ascii characters.
+			</li>
+			<li>
+				The "interacting" state should only be reached when a clientId of a responder, in the 'readyToPair' state, is assigned as partnerClientId in a controller client.
+			</li>
+		</ul>
+		
+		<h3 id="eventTransmission">Event transmission</h3>
+		<p>
+			The app can be used to test reception rate, delays and content accuracy of custom
+			<a href="../js/CREvent.html">CREvent</a> objects transmitted between crSockets. Using this functionality to send crEvents belonging to the communication protocol is not recommended.
+		</p>
+		
+		<p>
+			Events can be sent by filling in the <b>Event out</b> fields and pressing the "Send button". Note that this will only be possible when the crSocket is in the "interacting" state. Events must always contain an eventType. In addition it is possible to assign a subType and toggle the buffered, logged and interceptable event flags. For single events it is also possible to assign up to two parameters.
+		</p>
+		
+		<p>
+			To send multiple events, specify a count > 1, and min/max secs between events (must always be > 1). The param1 and param2 fields will automatically be set to the current event number and the current delay to the next event in millisecs.
+		</p>
+		
+		<p>Things to look out for:</p>
+		<ul>
+			<li>
+				Event reception should be reflected in the <b>Event in</b> fields of the partnerClient.
+			</li>
+			<li>
+				If the 'logged' flag is true (green) the events should be logged at the server.
+			</li>
+			<li>
+				If the 'buffered' flag is true (green) and the sender crSocket client is offline, the events should be buffered and then transmitted with one sec delay between each event when it becomes online.
+			</li>
+		</ul>
 	</body>
 </html>

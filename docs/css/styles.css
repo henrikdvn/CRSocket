@@ -2,7 +2,8 @@ body {margin: 1em; font-family: helvetica}
 
 h1 {margin: 1ex 0 1ex 0; font-size: 2em}
 h2 {margin: 1em 0 1ex 0; font-size: 1.5em}
-h3 {margin: 1ex 0 1ex 0; font-size: 1em}
+h3 {margin: 1.5em 0 1ex 0; font-size: 1em}
+p {margin: 1em 0 1em 0; font-size: 1em}
 
 dl {margin: 1em 0 1em 1em}
 dt {margin: 1em 0 0 1ex; color: #008; font-weight: bold}

@@ -35,7 +35,7 @@
 							<td class="group">
 								<table class="info">
 									<tr>
-										<th class="info top" colspan="2" title="Number of events received by the eventReceiver from its EventSource object, including all message event types transmitted from the eventsource except 'crEvent'">
+										<th class="info top" colspan="2" title="Number of 'open', 'error' and 'message' events received by the eventReceiver from its EventSource object. Message events transmitted from the eventsource are divided by type. All types are included except 'crEvent'">
 											ServerIn
 											<a class="infoSym" href="/docs/crsocket/resources/eventsource.html#protocol">ⓘ</a>
 										</th>
@@ -67,7 +67,7 @@
 							<td class="group">
 								<table class="info">
 									<tr>
-										<th class="info top" colspan="2" title="Number of events sent from the eventReceiver to the eventsource via its internal eventSender">
+										<th class="info top" colspan="2" title="Number of 'alive' and 'close' events sent from the eventReceiver to the eventsource via its internal eventSender">
 											ServerOut
 											<a class="infoSym" href="/docs/crsocket/resources/eventsource.html#protocol">ⓘ</a>
 										</th>
@@ -200,9 +200,9 @@
 				</th>
 			</tr>
 			<tr>
-				<th class="setup" id="activeHeader" title="CRSocket active metaState, Will be green when the crSocket is in the active state">Active</th>
+				<th class="setup" id="activeHeader" title="Will be green when the crSocket is in the 'active' metaState">Active</th>
 				<td class="setup">
-					<input class="setup" id="clientIdInput" type="text" title="The current clientId (automatically assigned), will be green when the crSocket is active" placeholder="clientId" readonly>
+					<input class="setup" id="clientIdInput" type="text" title="The current clientId (automatically assigned), will be green when the crSocket is 'active'" placeholder="clientId" readonly>
 				</td>
 				<td class="setup">
 					<button class="setup" id="resumeButton" title="Reactivate the crSocket" type="button" onclick="client.resumeApp()">Resume</button>
@@ -211,13 +211,13 @@
 					<button class="setup" id="pauseButton" title="Deactivate the crSocket" type="button" onclick="client.pauseApp()">Pause</button>
 				</td>
 				<td class="setup">
-					<button class="setup" id="clearClientIdButton" title="Clear the current clientId" type="button" onclick="client.clearClientId()">Clear</button>
+					<button class="setup" id="clearClientIdButton" title="Clear and unassign the current clientId" type="button" onclick="client.clearClientId()">Clear</button>
 				</td>
 			</tr>
 			<tr>
-				<th class="setup" id="authHeader" title="Authentication, will be green when the crSocket is successfully signed in">Authenticated</th>
+				<th class="setup" id="connectedHeader" title="Will be green when the crSocket is successfully signed into an eventsource and has entered the 'connected' metaState">Connected</th>
 				<td class="setup">
-					<input class="setup" id="accessTokenInput" title="The current accessToken, will be green when the crSocket is successfully signed in" type="text" placeholder="Token">
+					<input class="setup" id="accessTokenInput" title="The current accessToken, will be green when the token has been accepted and the crSocket is 'connected'" type="text" placeholder="Token">
 				</td>
 				<td class="setup">
 					<button class="setup" id="signInButton" title="Sign in to the eventreciever" type="button" onclick="client.assignAccessToken()">SignIn</button>
@@ -230,9 +230,9 @@
 				</td>
 			</tr>
 			<tr>
-				<th class="setup" id="pairedHeader" title="Pairing, will be green when the crSocket is interacting with the assigned partnerClient">Interacting</th>
+				<th class="setup" id="interactingHeader" title="Interacting, will be green when the crSocket has entered the 'interacting' state">Interacting</th>
 				<td class="setup">
-					<input class="setup" id="partnerClientIdInput" title="The current partnerClientId, will be green when the crSocket is interacting with the assigned partnerClient" type="text" placeholder="ClientId">
+					<input class="setup" id="partnerClientIdInput" title="The current partnerClientId, will be green when the crSocket is 'interacting' with the assigned partnerClient" type="text" placeholder="ClientId">
 				</td>
 				<td class="setup">
 					<button class="setup" id="assignPartnerClientIdButton" title="Assign the partnerClientId to the crSocket" type="button" onclick="client.assignPartner()">Assign</button>
@@ -269,10 +269,10 @@
 					<input class="setup evParam optional" id="eventOutParam2Input" title="CREvent param 2" type="text" placeholder="param2">
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutLogButton" title="CREvent log attribute" onclick="client.flipFlagged(this.id)">Log</button>
+					<button class="setup evOption" id="eventOutBufButton" title="CREvent buffered attribute" onclick="client.flipFlagged(this.id)">Buf</button>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventOutBufButton" title="CREvent buffered attribute" onclick="client.flipFlagged(this.id)">Buf</button>
+					<button class="setup evOption" id="eventOutLogButton" title="CREvent logged attribute" onclick="client.flipFlagged(this.id)">Log</button>
 				</td>
 				<td class="setup evOption">
 					<button class="setup evOption" id="eventOutItcButton" title="CREvent interceptable attribute" onclick="client.flipFlagged(this.id)">Itc</button>
@@ -310,10 +310,10 @@
 					<input class="setup evParam optional" id="eventInParam2Input" title="CREvent param 2, will contain the current eventDelay for multiEvents" type="text" placeholder="param2" readonly>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventInLogButton" title="CREvent log attribute" disabled>Log</button>
+					<button class="setup evOption" id="eventInBufButton" title="CREvent buffered attribute" disabled>Buf</button>
 				</td>
 				<td class="setup evOption">
-					<button class="setup evOption" id="eventInBufButton" title="CREvent buffered attribute" disabled>Buf</button>
+					<button class="setup evOption" id="eventInLogButton" title="CREvent logged attribute" disabled>Log</button>
 				</td>
 				<td class="setup evOption">
 					<button class="setup evOption" id="eventInItcButton" title="CREvent interceptable attribute" disabled>Itc</button>

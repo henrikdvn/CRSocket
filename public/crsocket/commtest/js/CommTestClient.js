@@ -84,12 +84,12 @@ class CommTestClient {
 		this.activeHeaderElem.setAttribute("origClassName", this.activeHeaderElem.className);
 		this.clientIdInputElem = document.getElementById("clientIdInput");
 		
-		this.authHeaderElem = document.getElementById("authHeader");
-		this.authHeaderElem.setAttribute("origClassName", this.authHeaderElem.className);
+		this.connectedHeaderElem = document.getElementById("connectedHeader");
+		this.connectedHeaderElem.setAttribute("origClassName", this.connectedHeaderElem.className);
 		this.accessTokenInputElem = document.getElementById("accessTokenInput");
 		
-		this.pairedHeaderElem = document.getElementById("pairedHeader");
-		this.pairedHeaderElem.setAttribute("origClassName", this.pairedHeaderElem.className);
+		this.interactingHeaderElem = document.getElementById("interactingHeader");
+		this.interactingHeaderElem.setAttribute("origClassName", this.interactingHeaderElem.className);
 		this.partnerClientIdInputElem = document.getElementById("partnerClientIdInput");
 		
 		this.eventOutTypeInputElem = document.getElementById("eventOutTypeInput");
@@ -390,9 +390,9 @@ class CommTestClient {
 		this.onInternalEvent("socketStateChanged", state);
 		this.setFlagged("activeHeader", this.socket.active);
 		this.setFlagged("clientIdInput", this.socket.active);
-		this.setFlagged("authHeader", this.socket.connected);
+		this.setFlagged("connectedHeader", this.socket.connected);
 		this.setFlagged("accessTokenInput", this.socket.connected);
-		this.setFlagged("pairedHeader", this.socket.paired);
+		this.setFlagged("interactingHeader", this.socket.state == "interacting");
 		this.setFlagged("partnerClientIdInput", this.socket.state == "interacting");
 		this.replaceChildNodesWithText(this.socketStateElem, state);
 		this.updateEventOutForm();
