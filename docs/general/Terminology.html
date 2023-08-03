@@ -3,16 +3,25 @@
 	<head>
 		<title>CRSocket, Terminology</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<link href="../css/styles.css" rel="stylesheet" type="text/css">
-	</head>
+			<link href="../css/styles.css" rel="stylesheet" type="text/css">
+			</head>
 	<body>
 		<h1>Terminology</h1>
+		
+		<h2>General naming conventions</h2>
+		<ul>
+			<li>Classes and data types are named with medial capitals, starting with capital letters, e.g. "CRSocket".</li>
+			<li>Class instances (objects) and variables are named with medial capitals, starting with lowercase letters, e.g. "crSocket".</li>
+			<li>Server resource are named with lowercase letters only, e.g. "eventsource".</li>
+		</ul>
+		
+		<h2>Core terms</h2>
 		<dl>
 			<dt id="accessToken">accessToken</dt>
 			<dd>A string which identifies the current user, composed and formatted according to an arbitrary security standard.</dd>
 			
 			<dt id="appId">appId</dt>
-			<dd>A string identifying a crSocket app, eg. <q class="name">commtest</q> or <q class="name">mathtrials</q>.</dd>
+			<dd>A string identifying a crSocket app, e.g. <q class="name">commtest</q> or <q class="name">mathtrials</q>.</dd>
 			
 			<dt id="clientId">clientId</dt>
 			<dd>
@@ -24,7 +33,7 @@
 			
 			<dt id="crEvent">crEvent</dt>
 			<dd>A PHP/JavaScript CREvent object that can be transmitted between crSocket clients.</dd>
-
+			
 			<dt id="crSocket">crSocket</dt>
 			<dd>A CRSocket JavaScript object.</dd>
 			
@@ -35,7 +44,7 @@
 			<dd>An active web app process that is able to communicate with a partnerClient by means of a crSocket.</dd>
 			
 			<dt id="CRSocket_metaState">CRSocket metaState</dt>
-			<dd>A set of crSocket states with some well defined common properties.</dd>
+			<dd>A named set of crSocket states with some well-defined common properties.</dd>
 			
 			<dt id="CRSocket_state">CRSocket state</dt>
 			<dd>The current state of a crSocket.</dd>

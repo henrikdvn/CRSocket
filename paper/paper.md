@@ -33,7 +33,7 @@ Tablet computers and similar devices have become a natural part of daily life an
 
 Current approaches to digital tasks are either based on self-administration or on handing over pre-configured devices to the participants. Controlling tasks from a separate device can help meet some of the challenges mentioned above by enabling a bigger toolbox related to motivation, preparation and individual task adaption, based on researchers' ability to engage with and understand the participants.
 
-Although the component was originally designed for lab experiments, it may also contribute to improved measurement quality and the creation of novel tablet tasks for other purposes, including settings where testers are not located in the same room but are able to communicate in other ways, eg. via video channels.
+Although the component was originally designed for lab experiments, it may also contribute to improved measurement quality and the creation of novel tablet tasks for other purposes, including settings where testers are not located in the same room but are able to communicate in other ways, e.g. via video channels.
 
 # Architecture
 
@@ -47,15 +47,15 @@ Authentication is based on access tokens. This facilitates integration with a wi
 
 ## The CRSocket class
 
-The CrSocket class is used by controller and responder client apps to establish communication channels, exchange CREvent objects, and monitor communication states. CRSocket objects are instantiated with a client role which can be either "controller" or “responder" and a CRConfig object which, among other things, contains an application id that identifies a controller/responder web app pair.
+The CRSocket class is used by controller and responder client apps to establish communication channels, exchange CREvent objects, and monitor communication states. CRSocket objects are instantiated with a client role which can be either "controller" or “responder" and a CRConfig object which, among other things, contains an application id that identifies a controller/responder web app pair.
 
 The first time a CRSocket object is instantiated, it is assigned a server-generated client id. This id is associated with the current combination of application id / client role within the current engine. It is saved in the engine's localStorage object and can be reused in subsequent instantiations to establish communication channels between active CRSocket objects in all major browser engines.
 
-The CRSocket is implemented as a state machine, with well defined set of states and state transitions. Event reception and state changes are communicated by means of standard JavaScript event APIs.
+The CRSocket is implemented as a state machine, with a well-defined set of states and state transitions. Event reception and state changes are communicated by means of standard JavaScript event APIs.
 
 ## The CREvent class
 
-This class, with mirroring implementations in JavaScript and PHP, represents events that can be transmitted between controller and responder CrSocket objects. These events may contain any number of text-convertible parameters. They also contain flags related to buffering, logging, and server-side interception.
+This class, with mirroring implementations in JavaScript and PHP, represents events that can be transmitted between controller and responder CRSocket objects. These events may contain any number of text-convertible parameters. They also contain flags related to buffering, logging, and server-side interception.
 
 ## Server resources
 
@@ -70,6 +70,13 @@ Server-side functionality can be replaced by other implementations as long as th
 Both eventsource and sendevent resources may contain server-side event plugin mechanisms that can be used to implement authentication schemes, storage functionality and various types of event processing.
 
 ![Basic architecture](basicArchitecture.png)
+*Basic architecture. Illustrates how CRSocket objects interact with server resources to obtain unique identifiers and exchange CREvent objects*
+
+## Naming conventions
+
+* Classes and data types are named with medial capitals, starting with capital letters, e.g. "CRSocket".
+* Class instances (objects) and variables are named with medial capitals, starting with lowercase letters, e.g. "crSocket".
+* Server resource are named with lowercase letters only, e.g. "eventsource".
 
 # Acknowledgements
 

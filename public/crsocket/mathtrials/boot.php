@@ -8,7 +8,7 @@ include_once("../../boot.php");
  ------------------------------------------------------------------------------------------------------------------
  */
 
-// The current application id (eg. "commtest" or "mathtrials"), derived from the parent directory of this script.
+// The current application id (e.g. "commtest" or "mathtrials"), derived from the parent directory of this script.
 
 define("APP_ID", basename(__DIR__));
 
