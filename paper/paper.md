@@ -37,7 +37,7 @@ Although the component was originally designed for lab experiments, it may also 
 
 # Architecture
 
-To maximise reusability, the component has been extracted from the original software, an undocumented prototype included as supplementary material in [@Holmboe2021], and encapsulated in generic classes, using only built-in client- and server-side functionality and standard APIs. There are no global variables and no bindings to other parts of the ECITT software or external libraries. Client-side classes are implemented in JavaScript and server-side classes are implemented in PHP.
+To maximise reusability, the component has been extracted from the original code (an undocumented prototype included in [@Holmboe2021] as supplementary material) and encapsulated in generic classes, using only built-in client- and server-side functionality and standard APIs. There are no global variables and no bindings to other parts of the ECITT software or external libraries. Client-side classes are implemented in JavaScript and server-side classes are implemented in PHP.
 
 The component implements a relatively robust protocol for the identification and exchange of events between controller and responder processes. It is designed to handle various technical and human incidents that has been observed during testing. This includes differences between different browser engines, network issues, and challenges related to server functionality, resource usage and delays.
 
