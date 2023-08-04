@@ -69,6 +69,7 @@ Both eventsource and sendevent resources may contain server-side event plugin me
 
 
 ![Basic architecture](basicArchitecture.png)
+
 *Basic architecture. Illustrates how CRSocket objects interact with server resources to obtain unique identifiers and exchange CREvent objects [^1].*
 
 [^1]: Naming conventions: Classes and data types are named with medial capitals, starting with capital letters, e.g. "CRSocket".
