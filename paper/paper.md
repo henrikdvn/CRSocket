@@ -68,7 +68,7 @@ Server-side functionality can be replaced by other implementations as long as th
 Both eventsource and sendevent resources may contain server-side event plugin mechanisms that can be used to implement authentication schemes, storage functionality and custom event processing. User authentication is based on access tokens. This facilitates integration with a wide range of authentication schemes ranging from simple user ids to advanced industry-standard protocols.
 
 ![Basic architecture](basicArchitecture.png)
-*Basic architecture. Illustrates how `CRSocket` objects interact with server resources to obtain unique identifiers and exchange CREvent objects.*
+*Basic architecture. Illustrates how `CRSocket` objects interact with server resources to obtain unique identifiers and exchange `CREvent` objects.*
 
 ### Naming conventions:
 * Classes and data types are named with medial capitals, starting with capital letters, e.g. `CRSocket`.
