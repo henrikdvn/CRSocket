@@ -21,11 +21,11 @@ bibliography: paper.bib
 
 # Summary
 
-The Controller-Responder Socket (CRSocket) is a web app component that can be used to develop digital tasks where testers use a controller device to administer trials and a separate responder device to present stimuli and collect responses. In addition to providing a more streamlined and comfortable test situation, this approach may improve measurement quality because potentially distracting activities related to configuration and initiation of tasks are hidden from the participant. It also facilitates more flexible data collection protocols where testers can make real-time adjustments based on direct observations of the test situation and feedback from various sources presented on the controller device. In addition to communication functionality, the CRSocket also provides client-side buffering of events and server-side plug-in interfaces related to access control and data storage. Please note that usage of this software requires programming skills and experience with the PHP and JavaScript programming languages.
+The Controller-Responder Socket (`CRSocket`) is a web app component that can be used to develop digital tasks where testers use a controller device to administer trials and a separate responder device to present stimuli and collect responses. In addition to providing a more streamlined and comfortable test situation, this approach may improve measurement quality because potentially distracting activities related to configuration and initiation of tasks are hidden from the participant. It also facilitates more flexible data collection protocols where testers can make real-time adjustments based on direct observations of the test situation and feedback from various sources presented on the controller device. In addition to communication functionality, the `CRSocket` also provides client-side buffering of events and server-side plug-in interfaces related to access control and data storage. Please note that usage of this software requires programming skills and experience with the PHP and JavaScript programming languages.
 
 # Statement of need
 
-The CRSocket component was originally developed for the Early Childhood Inhibitory Touch Task (ECITT). This is a suite of experimental psychology tasks designed to measure inhibitory behaviour using trials presented on tablet computers.
+The `CRSocket` component was originally developed for the Early Childhood Inhibitory Touch Task (ECITT). This is a suite of experimental psychology tasks designed to measure inhibitory behaviour using trials presented on tablet computers.
 
 The primary novelty of the ECITT is that it can be "minimally modified to suit different ages, whilst remaining structurally equivalent" [@Holmboe2021]. This is the first task that can be used to measure inhibitory behaviour in a consistent way across the lifespan, from 18 months and upward.  In addition to the longitudinal validation publication, three studies related to specific age groups based on this task, have been published so far [@Lui2021; @Hendry2022; @Fiske2022].
 
@@ -43,37 +43,37 @@ The component implements a relatively robust protocol for the identification and
 
 The protocol is asymmetric in the sense that only controller apps can establish and maintain communication channels. Responder apps can accept, reject, and abort connections, but they cannot actively approach controllers to establish new connections. Apart from that, controllers and responders interact as equal peers.
 
-## The CRSocket class
+## The `CRSocket` class
 
-The CRSocket class is used by controller and responder client apps to establish communication channels, exchange CREvent objects, and monitor communication states. CRSocket objects are instantiated with a client role which can be either "controller" or “responder" and a CRConfig object which, among other things, contains an application id that identifies a controller/responder web app pair.
+The `CRSocket` class is used by controller and responder client apps to establish communication channels, exchange CREvent objects, and monitor communication states. `CRSocket` objects are instantiated with a client role which can be either "controller" or “responder" and a CRConfig object which, among other things, contains an application id that identifies a controller/responder web app pair.
 
-The first time a CRSocket object is instantiated, it is assigned a server-generated client id. This id is associated with the current combination of application id / client role within the current engine. It is saved in the engine's localStorage object and can be reused in subsequent instantiations to establish communication channels between active CRSocket objects in all major browser engines.
+The first time a `CRSocket` object is instantiated, it is assigned a server-generated client id. This id is associated with the current combination of application id / client role within the current engine. It is saved in the engine's localStorage object and can be reused in subsequent instantiations to establish communication channels between active `CRSocket` objects in all major browser engines.
 
 The class is implemented as a state machine, with a well-defined set of states and state transitions. Event reception and state changes are communicated by means of standard JavaScript event APIs.
 
-## The CREvent class
+## The `CREvent` class
 
-This class, with mirroring implementations in JavaScript and PHP, represents events that can be transmitted between controller and responder CRSocket objects. These events may contain any number of text-convertible parameters. They also contain flags related to buffering, logging, and server-side interception.
+This class, with mirroring implementations in JavaScript and PHP, represents events that can be transmitted between controller and responder `CRSocket` objects. These events may contain any number of text-convertible parameters. They also contain flags related to buffering, logging, and server-side interception.
 
 ## Server resources
 
 The component provides default implementations of resources that must be available on the server:
 
-* **clientid**. This resource generates a new, unique clientId, and returns an XML document containing this id to the requesting client.
-* **eventsource**. This resource transmits a stream of events, representing CREvent objects and internal events from the server to the client, formatted as server-sent events.
-* **sendevent**. This resource receives a single event from a client, formatted as an HTTP GET request and transmits it to an eventsource process.
+* **`clientid`**. This resource generates a new, unique clientId, and returns an XML document containing this id to the requesting client.
+* **`eventsource`**. This resource transmits a stream of events, representing CREvent objects and internal events from the server to the client, formatted as server-sent events.
+* **`sendevent`**. This resource receives a single event from a client, formatted as an HTTP GET request and transmits it to an eventsource process.
 
 Server-side functionality can be replaced by other implementations as long as the resources described above conform to their respective specifications.
 
 Both eventsource and sendevent resources may contain server-side event plugin mechanisms that can be used to implement authentication schemes, storage functionality and custom event processing. User authentication is based on access tokens. This facilitates integration with a wide range of authentication schemes ranging from simple user ids to advanced industry-standard protocols.
 
 ![Basic architecture](basicArchitecture.png)
-*Basic architecture. Illustrates how CRSocket objects interact with server resources to obtain unique identifiers and exchange CREvent objects.*
+*Basic architecture. Illustrates how `CRSocket` objects interact with server resources to obtain unique identifiers and exchange CREvent objects.*
 
 ### Naming conventions:
-* Classes and data types are named with medial capitals, starting with capital letters, e.g. "CRSocket".
-* Class instances (objects) and variables are named with medial capitals, starting with lowercase letters, e.g. "crSocket".
-* Server resource are named with lowercase letters only, e.g. "eventsource".
+* Classes and data types are named with medial capitals, starting with capital letters, e.g. `CRSocket`.
+* Class instances (objects) and variables are named with medial capitals, starting with lowercase letters, e.g. `crSocket`.
+* Server resource are named with lowercase letters only, e.g. `eventsource`.
 
 # Acknowledgements
 
